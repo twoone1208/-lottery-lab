@@ -1,0 +1,3776 @@
+{
+  "version": 2,
+  "game": "daily",
+  "rows": [
+    {
+      "game": "daily",
+      "date": "2026-03-29",
+      "weekday": "日",
+      "nums": [
+        2,
+        10,
+        16,
+        27,
+        39
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-03-30",
+      "weekday": "一",
+      "nums": [
+        1,
+        3,
+        14,
+        20,
+        29
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-03-31",
+      "weekday": "二",
+      "nums": [
+        1,
+        9,
+        18,
+        31,
+        36
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-04-01",
+      "weekday": "三",
+      "nums": [
+        4,
+        5,
+        10,
+        13,
+        32
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-04-02",
+      "weekday": "四",
+      "nums": [
+        7,
+        12,
+        16,
+        20,
+        32
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-04-03",
+      "weekday": "五",
+      "nums": [
+        7,
+        21,
+        25,
+        31,
+        37
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-04-04",
+      "weekday": "六",
+      "nums": [
+        14,
+        15,
+        23,
+        30,
+        37
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-04-05",
+      "weekday": "日",
+      "nums": [
+        1,
+        4,
+        9,
+        18,
+        32
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-04-06",
+      "weekday": "一",
+      "nums": [
+        4,
+        13,
+        16,
+        19,
+        37
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-04-07",
+      "weekday": "二",
+      "nums": [
+        4,
+        5,
+        20,
+        21,
+        39
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-04-08",
+      "weekday": "三",
+      "nums": [
+        4,
+        8,
+        23,
+        28,
+        29
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-04-09",
+      "weekday": "四",
+      "nums": [
+        6,
+        7,
+        8,
+        27,
+        32
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-04-10",
+      "weekday": "五",
+      "nums": [
+        1,
+        5,
+        17,
+        23,
+        32
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-04-11",
+      "weekday": "六",
+      "nums": [
+        11,
+        12,
+        28,
+        29,
+        31
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-04-12",
+      "weekday": "日",
+      "nums": [
+        10,
+        16,
+        18,
+        27,
+        28
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-04-13",
+      "weekday": "一",
+      "nums": [
+        14,
+        16,
+        20,
+        22,
+        38
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-04-14",
+      "weekday": "二",
+      "nums": [
+        3,
+        13,
+        20,
+        29,
+        37
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-04-15",
+      "weekday": "三",
+      "nums": [
+        2,
+        8,
+        23,
+        33,
+        34
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-04-16",
+      "weekday": "四",
+      "nums": [
+        21,
+        28,
+        30,
+        32,
+        39
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-04-17",
+      "weekday": "五",
+      "nums": [
+        8,
+        10,
+        21,
+        22,
+        38
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-04-18",
+      "weekday": "六",
+      "nums": [
+        9,
+        10,
+        23,
+        24,
+        25
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-04-19",
+      "weekday": "日",
+      "nums": [
+        1,
+        10,
+        13,
+        14,
+        31
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-04-20",
+      "weekday": "一",
+      "nums": [
+        13,
+        16,
+        23,
+        33,
+        36
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-04-21",
+      "weekday": "二",
+      "nums": [
+        7,
+        17,
+        36,
+        38,
+        39
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-04-22",
+      "weekday": "三",
+      "nums": [
+        2,
+        11,
+        12,
+        35,
+        39
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-04-23",
+      "weekday": "四",
+      "nums": [
+        9,
+        14,
+        19,
+        30,
+        33
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-04-24",
+      "weekday": "五",
+      "nums": [
+        15,
+        17,
+        30,
+        34,
+        35
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-04-25",
+      "weekday": "六",
+      "nums": [
+        3,
+        6,
+        18,
+        29,
+        34
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-04-26",
+      "weekday": "日",
+      "nums": [
+        1,
+        5,
+        6,
+        20,
+        34
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-04-27",
+      "weekday": "一",
+      "nums": [
+        9,
+        11,
+        18,
+        33,
+        37
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-04-28",
+      "weekday": "二",
+      "nums": [
+        2,
+        4,
+        5,
+        10,
+        31
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-04-29",
+      "weekday": "三",
+      "nums": [
+        14,
+        19,
+        33,
+        37,
+        38
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-04-30",
+      "weekday": "四",
+      "nums": [
+        1,
+        5,
+        20,
+        21,
+        39
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-05-01",
+      "weekday": "五",
+      "nums": [
+        10,
+        14,
+        21,
+        33,
+        39
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-05-02",
+      "weekday": "六",
+      "nums": [
+        8,
+        19,
+        28,
+        35,
+        36
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-05-03",
+      "weekday": "日",
+      "nums": [
+        11,
+        16,
+        18,
+        20,
+        23
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-05-04",
+      "weekday": "一",
+      "nums": [
+        5,
+        10,
+        14,
+        16,
+        22
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-05-05",
+      "weekday": "二",
+      "nums": [
+        9,
+        13,
+        17,
+        19,
+        31
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-05-06",
+      "weekday": "三",
+      "nums": [
+        8,
+        13,
+        18,
+        32,
+        36
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-05-07",
+      "weekday": "四",
+      "nums": [
+        2,
+        5,
+        13,
+        16,
+        36
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-05-08",
+      "weekday": "五",
+      "nums": [
+        3,
+        8,
+        12,
+        26,
+        29
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-05-09",
+      "weekday": "六",
+      "nums": [
+        5,
+        9,
+        12,
+        14,
+        15
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-05-10",
+      "weekday": "日",
+      "nums": [
+        4,
+        11,
+        12,
+        28,
+        35
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-05-11",
+      "weekday": "一",
+      "nums": [
+        9,
+        11,
+        17,
+        25,
+        29
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-05-12",
+      "weekday": "二",
+      "nums": [
+        14,
+        17,
+        19,
+        29,
+        38
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-05-13",
+      "weekday": "三",
+      "nums": [
+        8,
+        17,
+        25,
+        31,
+        33
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-05-14",
+      "weekday": "四",
+      "nums": [
+        4,
+        19,
+        23,
+        24,
+        32
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-05-15",
+      "weekday": "五",
+      "nums": [
+        1,
+        8,
+        31,
+        32,
+        38
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-05-16",
+      "weekday": "六",
+      "nums": [
+        6,
+        10,
+        26,
+        29,
+        33
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-05-17",
+      "weekday": "日",
+      "nums": [
+        10,
+        12,
+        21,
+        22,
+        30
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-05-18",
+      "weekday": "一",
+      "nums": [
+        3,
+        12,
+        15,
+        29,
+        33
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-05-19",
+      "weekday": "二",
+      "nums": [
+        11,
+        16,
+        30,
+        31,
+        33
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-05-20",
+      "weekday": "三",
+      "nums": [
+        9,
+        13,
+        15,
+        18,
+        19
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-05-21",
+      "weekday": "四",
+      "nums": [
+        2,
+        10,
+        20,
+        30,
+        39
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-05-22",
+      "weekday": "五",
+      "nums": [
+        1,
+        6,
+        11,
+        34,
+        39
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-05-23",
+      "weekday": "六",
+      "nums": [
+        6,
+        14,
+        16,
+        28,
+        36
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-05-24",
+      "weekday": "日",
+      "nums": [
+        7,
+        26,
+        33,
+        35,
+        37
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-05-25",
+      "weekday": "一",
+      "nums": [
+        2,
+        4,
+        11,
+        12,
+        24
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-05-26",
+      "weekday": "二",
+      "nums": [
+        2,
+        14,
+        34,
+        35,
+        39
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-05-27",
+      "weekday": "三",
+      "nums": [
+        2,
+        6,
+        19,
+        22,
+        27
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-05-28",
+      "weekday": "四",
+      "nums": [
+        7,
+        15,
+        16,
+        22,
+        30
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-05-29",
+      "weekday": "五",
+      "nums": [
+        2,
+        12,
+        20,
+        30,
+        34
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-05-30",
+      "weekday": "六",
+      "nums": [
+        5,
+        20,
+        27,
+        35,
+        36
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-05-31",
+      "weekday": "日",
+      "nums": [
+        1,
+        15,
+        21,
+        23,
+        24
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-06-01",
+      "weekday": "一",
+      "nums": [
+        4,
+        9,
+        15,
+        20,
+        30
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-06-02",
+      "weekday": "二",
+      "nums": [
+        6,
+        14,
+        23,
+        28,
+        37
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-06-03",
+      "weekday": "三",
+      "nums": [
+        5,
+        11,
+        19,
+        25,
+        31
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-06-04",
+      "weekday": "四",
+      "nums": [
+        9,
+        17,
+        28,
+        29,
+        33
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-06-05",
+      "weekday": "五",
+      "nums": [
+        6,
+        23,
+        25,
+        27,
+        38
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-06-06",
+      "weekday": "六",
+      "nums": [
+        2,
+        5,
+        6,
+        24,
+        28
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-06-07",
+      "weekday": "日",
+      "nums": [
+        14,
+        23,
+        32,
+        36,
+        37
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-06-08",
+      "weekday": "一",
+      "nums": [
+        11,
+        22,
+        23,
+        26,
+        28
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-06-09",
+      "weekday": "二",
+      "nums": [
+        4,
+        11,
+        24,
+        36,
+        39
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-06-10",
+      "weekday": "三",
+      "nums": [
+        5,
+        21,
+        23,
+        30,
+        31
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-06-11",
+      "weekday": "四",
+      "nums": [
+        6,
+        28,
+        35,
+        36,
+        37
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-06-12",
+      "weekday": "五",
+      "nums": [
+        2,
+        6,
+        31,
+        33,
+        37
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-06-13",
+      "weekday": "六",
+      "nums": [
+        13,
+        14,
+        16,
+        17,
+        33
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-06-14",
+      "weekday": "日",
+      "nums": [
+        2,
+        6,
+        26,
+        32,
+        37
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-06-15",
+      "weekday": "一",
+      "nums": [
+        1,
+        14,
+        24,
+        32,
+        35
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-06-16",
+      "weekday": "二",
+      "nums": [
+        5,
+        9,
+        19,
+        33,
+        37
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-06-17",
+      "weekday": "三",
+      "nums": [
+        1,
+        6,
+        27,
+        30,
+        37
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-06-18",
+      "weekday": "四",
+      "nums": [
+        13,
+        21,
+        22,
+        25,
+        30
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-06-19",
+      "weekday": "五",
+      "nums": [
+        5,
+        8,
+        20,
+        32,
+        38
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-06-20",
+      "weekday": "六",
+      "nums": [
+        17,
+        23,
+        33,
+        35,
+        39
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-06-21",
+      "weekday": "日",
+      "nums": [
+        1,
+        2,
+        13,
+        19,
+        35
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-06-22",
+      "weekday": "一",
+      "nums": [
+        5,
+        11,
+        20,
+        32,
+        36
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-06-23",
+      "weekday": "二",
+      "nums": [
+        1,
+        5,
+        11,
+        16,
+        24
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-06-24",
+      "weekday": "三",
+      "nums": [
+        3,
+        5,
+        23,
+        32,
+        38
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-06-25",
+      "weekday": "四",
+      "nums": [
+        2,
+        3,
+        12,
+        19,
+        36
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-06-26",
+      "weekday": "五",
+      "nums": [
+        3,
+        6,
+        18,
+        27,
+        35
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-06-27",
+      "weekday": "六",
+      "nums": [
+        12,
+        22,
+        29,
+        33,
+        36
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-06-28",
+      "weekday": "日",
+      "nums": [
+        22,
+        29,
+        34,
+        36,
+        37
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-06-29",
+      "weekday": "一",
+      "nums": [
+        3,
+        15,
+        25,
+        27,
+        34
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-06-30",
+      "weekday": "二",
+      "nums": [
+        9,
+        12,
+        22,
+        37,
+        38
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-07-01",
+      "weekday": "三",
+      "nums": [
+        11,
+        17,
+        28,
+        35,
+        36
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-07-02",
+      "weekday": "四",
+      "nums": [
+        4,
+        22,
+        27,
+        34,
+        39
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-07-03",
+      "weekday": "五",
+      "nums": [
+        4,
+        9,
+        28,
+        35,
+        36
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-07-04",
+      "weekday": "六",
+      "nums": [
+        4,
+        6,
+        15,
+        26,
+        29
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-07-05",
+      "weekday": "日",
+      "nums": [
+        6,
+        11,
+        29,
+        34,
+        38
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-07-06",
+      "weekday": "一",
+      "nums": [
+        11,
+        16,
+        17,
+        19,
+        36
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-07-07",
+      "weekday": "二",
+      "nums": [
+        13,
+        18,
+        21,
+        23,
+        30
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-07-08",
+      "weekday": "三",
+      "nums": [
+        6,
+        13,
+        26,
+        27,
+        36
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-07-09",
+      "weekday": "四",
+      "nums": [
+        11,
+        23,
+        25,
+        28,
+        36
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-07-10",
+      "weekday": "五",
+      "nums": [
+        2,
+        6,
+        11,
+        21,
+        27
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-07-11",
+      "weekday": "六",
+      "nums": [
+        10,
+        12,
+        25,
+        28,
+        34
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-07-12",
+      "weekday": "日",
+      "nums": [
+        1,
+        7,
+        12,
+        15,
+        33
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-07-13",
+      "weekday": "一",
+      "nums": [
+        2,
+        5,
+        19,
+        27,
+        34
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-07-14",
+      "weekday": "二",
+      "nums": [
+        6,
+        9,
+        31,
+        33,
+        37
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-07-15",
+      "weekday": "三",
+      "nums": [
+        12,
+        23,
+        26,
+        29,
+        38
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-07-16",
+      "weekday": "四",
+      "nums": [
+        2,
+        5,
+        10,
+        26,
+        34
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-07-17",
+      "weekday": "五",
+      "nums": [
+        7,
+        8,
+        11,
+        17,
+        39
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-07-18",
+      "weekday": "六",
+      "nums": [
+        3,
+        27,
+        31,
+        32,
+        36
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-07-19",
+      "weekday": "日",
+      "nums": [
+        4,
+        12,
+        19,
+        27,
+        33
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-07-20",
+      "weekday": "一",
+      "nums": [
+        12,
+        13,
+        21,
+        27,
+        28
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-07-21",
+      "weekday": "二",
+      "nums": [
+        14,
+        27,
+        29,
+        31,
+        33
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。"
+    },
+    {
+      "game": "daily",
+      "date": "2026-07-22",
+      "weekday": "三",
+      "nums": [
+        16,
+        25,
+        27,
+        28,
+        39
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11945"
+    },
+    {
+      "game": "daily",
+      "date": "2026-07-23",
+      "weekday": "四",
+      "nums": [
+        1,
+        14,
+        16,
+        22,
+        23
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11946"
+    },
+    {
+      "game": "daily",
+      "date": "2026-07-24",
+      "weekday": "五",
+      "nums": [
+        3,
+        16,
+        19,
+        30,
+        33
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11947"
+    },
+    {
+      "game": "daily",
+      "date": "2026-07-25",
+      "weekday": "六",
+      "nums": [
+        11,
+        14,
+        16,
+        22,
+        32
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11948"
+    },
+    {
+      "game": "daily",
+      "date": "2026-07-26",
+      "weekday": "日",
+      "nums": [
+        4,
+        12,
+        14,
+        17,
+        20
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11949"
+    },
+    {
+      "game": "daily",
+      "date": "2026-07-27",
+      "weekday": "一",
+      "nums": [
+        14,
+        16,
+        18,
+        24,
+        25
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11950"
+    },
+    {
+      "game": "daily",
+      "date": "2026-07-28",
+      "weekday": "二",
+      "nums": [
+        1,
+        11,
+        19,
+        34,
+        39
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11951"
+    },
+    {
+      "game": "daily",
+      "date": "2026-07-29",
+      "weekday": "三",
+      "nums": [
+        5,
+        14,
+        21,
+        30,
+        34
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11952"
+    },
+    {
+      "game": "daily",
+      "date": "2026-07-30",
+      "weekday": "四",
+      "nums": [
+        12,
+        19,
+        26,
+        29,
+        39
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11953"
+    },
+    {
+      "game": "daily",
+      "date": "2026-07-31",
+      "weekday": "五",
+      "nums": [
+        6,
+        13,
+        26,
+        29,
+        31
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11954"
+    },
+    {
+      "game": "daily",
+      "date": "2026-08-01",
+      "weekday": "六",
+      "nums": [
+        3,
+        17,
+        18,
+        20,
+        37
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11955"
+    },
+    {
+      "game": "daily",
+      "date": "2026-08-02",
+      "weekday": "日",
+      "nums": [
+        2,
+        15,
+        21,
+        25,
+        29
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11956"
+    },
+    {
+      "game": "daily",
+      "date": "2026-08-03",
+      "weekday": "一",
+      "nums": [
+        2,
+        3,
+        20,
+        24,
+        27
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11957"
+    },
+    {
+      "game": "daily",
+      "date": "2026-08-04",
+      "weekday": "二",
+      "nums": [
+        8,
+        16,
+        19,
+        24,
+        32
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11958"
+    },
+    {
+      "game": "daily",
+      "date": "2026-08-05",
+      "weekday": "三",
+      "nums": [
+        19,
+        23,
+        29,
+        30,
+        38
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11959"
+    },
+    {
+      "game": "daily",
+      "date": "2026-08-06",
+      "weekday": "四",
+      "nums": [
+        4,
+        10,
+        35,
+        37,
+        39
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11960"
+    },
+    {
+      "game": "daily",
+      "date": "2026-08-07",
+      "weekday": "五",
+      "nums": [
+        8,
+        17,
+        28,
+        32,
+        34
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11961"
+    },
+    {
+      "game": "daily",
+      "date": "2026-08-08",
+      "weekday": "六",
+      "nums": [
+        1,
+        14,
+        19,
+        35,
+        38
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11962"
+    },
+    {
+      "game": "daily",
+      "date": "2026-08-09",
+      "weekday": "日",
+      "nums": [
+        5,
+        11,
+        14,
+        27,
+        33
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11963"
+    },
+    {
+      "game": "daily",
+      "date": "2026-08-10",
+      "weekday": "一",
+      "nums": [
+        9,
+        14,
+        19,
+        26,
+        32
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11964"
+    },
+    {
+      "game": "daily",
+      "date": "2026-08-11",
+      "weekday": "二",
+      "nums": [
+        9,
+        10,
+        11,
+        13,
+        25
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11965"
+    },
+    {
+      "game": "daily",
+      "date": "2026-08-12",
+      "weekday": "三",
+      "nums": [
+        5,
+        8,
+        11,
+        21,
+        32
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11966"
+    },
+    {
+      "game": "daily",
+      "date": "2026-08-13",
+      "weekday": "四",
+      "nums": [
+        6,
+        11,
+        14,
+        21,
+        24
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11967"
+    },
+    {
+      "game": "daily",
+      "date": "2026-08-14",
+      "weekday": "五",
+      "nums": [
+        9,
+        11,
+        13,
+        27,
+        36
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11968"
+    },
+    {
+      "game": "daily",
+      "date": "2026-08-15",
+      "weekday": "六",
+      "nums": [
+        4,
+        7,
+        10,
+        25,
+        31
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11969"
+    },
+    {
+      "game": "daily",
+      "date": "2026-08-16",
+      "weekday": "日",
+      "nums": [
+        2,
+        8,
+        10,
+        23,
+        39
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11970"
+    },
+    {
+      "game": "daily",
+      "date": "2026-08-17",
+      "weekday": "一",
+      "nums": [
+        2,
+        5,
+        14,
+        31,
+        39
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11971"
+    },
+    {
+      "game": "daily",
+      "date": "2026-08-18",
+      "weekday": "二",
+      "nums": [
+        7,
+        15,
+        21,
+        33,
+        34
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11972"
+    },
+    {
+      "game": "daily",
+      "date": "2026-08-19",
+      "weekday": "三",
+      "nums": [
+        5,
+        15,
+        31,
+        38,
+        39
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11973"
+    },
+    {
+      "game": "daily",
+      "date": "2026-08-20",
+      "weekday": "四",
+      "nums": [
+        9,
+        15,
+        25,
+        32,
+        38
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11974"
+    },
+    {
+      "game": "daily",
+      "date": "2026-08-21",
+      "weekday": "五",
+      "nums": [
+        10,
+        30,
+        31,
+        34,
+        35
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11975"
+    },
+    {
+      "game": "daily",
+      "date": "2026-08-22",
+      "weekday": "六",
+      "nums": [
+        4,
+        25,
+        31,
+        37,
+        39
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11976"
+    },
+    {
+      "game": "daily",
+      "date": "2026-08-23",
+      "weekday": "日",
+      "nums": [
+        2,
+        15,
+        22,
+        29,
+        33
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11977"
+    },
+    {
+      "game": "daily",
+      "date": "2026-08-24",
+      "weekday": "一",
+      "nums": [
+        8,
+        10,
+        22,
+        23,
+        36
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11978"
+    },
+    {
+      "game": "daily",
+      "date": "2026-08-25",
+      "weekday": "二",
+      "nums": [
+        9,
+        11,
+        14,
+        16,
+        34
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11979"
+    },
+    {
+      "game": "daily",
+      "date": "2026-08-26",
+      "weekday": "三",
+      "nums": [
+        2,
+        24,
+        27,
+        35,
+        39
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11980"
+    },
+    {
+      "game": "daily",
+      "date": "2026-08-27",
+      "weekday": "四",
+      "nums": [
+        2,
+        7,
+        17,
+        23,
+        38
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11981"
+    },
+    {
+      "game": "daily",
+      "date": "2026-08-28",
+      "weekday": "五",
+      "nums": [
+        2,
+        13,
+        20,
+        22,
+        38
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11982"
+    },
+    {
+      "game": "daily",
+      "date": "2026-08-29",
+      "weekday": "六",
+      "nums": [
+        4,
+        12,
+        29,
+        30,
+        39
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11983"
+    },
+    {
+      "game": "daily",
+      "date": "2026-08-30",
+      "weekday": "日",
+      "nums": [
+        3,
+        4,
+        14,
+        29,
+        30
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11984"
+    },
+    {
+      "game": "daily",
+      "date": "2026-08-31",
+      "weekday": "一",
+      "nums": [
+        6,
+        23,
+        27,
+        28,
+        31
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11985"
+    },
+    {
+      "game": "daily",
+      "date": "2026-09-01",
+      "weekday": "二",
+      "nums": [
+        9,
+        12,
+        28,
+        30,
+        37
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11986"
+    },
+    {
+      "game": "daily",
+      "date": "2026-09-02",
+      "weekday": "三",
+      "nums": [
+        1,
+        7,
+        8,
+        18,
+        39
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11987"
+    },
+    {
+      "game": "daily",
+      "date": "2026-09-03",
+      "weekday": "四",
+      "nums": [
+        3,
+        6,
+        23,
+        29,
+        35
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11988"
+    },
+    {
+      "game": "daily",
+      "date": "2026-09-04",
+      "weekday": "五",
+      "nums": [
+        4,
+        7,
+        10,
+        27,
+        38
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11989"
+    },
+    {
+      "game": "daily",
+      "date": "2026-09-05",
+      "weekday": "六",
+      "nums": [
+        8,
+        24,
+        26,
+        35,
+        39
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11990"
+    },
+    {
+      "game": "daily",
+      "date": "2026-09-06",
+      "weekday": "日",
+      "nums": [
+        6,
+        12,
+        14,
+        24,
+        32
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11991"
+    },
+    {
+      "game": "daily",
+      "date": "2026-09-07",
+      "weekday": "一",
+      "nums": [
+        12,
+        13,
+        17,
+        28,
+        34
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11992"
+    },
+    {
+      "game": "daily",
+      "date": "2026-09-08",
+      "weekday": "二",
+      "nums": [
+        4,
+        6,
+        15,
+        22,
+        25
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11993"
+    },
+    {
+      "game": "daily",
+      "date": "2026-09-09",
+      "weekday": "三",
+      "nums": [
+        1,
+        9,
+        15,
+        37,
+        38
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11994"
+    },
+    {
+      "game": "daily",
+      "date": "2026-09-10",
+      "weekday": "四",
+      "nums": [
+        7,
+        9,
+        12,
+        15,
+        27
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11995"
+    },
+    {
+      "game": "daily",
+      "date": "2026-09-11",
+      "weekday": "五",
+      "nums": [
+        2,
+        9,
+        24,
+        35,
+        39
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11996"
+    },
+    {
+      "game": "daily",
+      "date": "2026-09-12",
+      "weekday": "六",
+      "nums": [
+        3,
+        9,
+        16,
+        25,
+        30
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11997"
+    },
+    {
+      "game": "daily",
+      "date": "2026-09-13",
+      "weekday": "日",
+      "nums": [
+        19,
+        21,
+        33,
+        35,
+        38
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "11998"
+    },
+    {
+      "game": "daily",
+      "date": "2026-09-14",
+      "weekday": "一",
+      "nums": [
+        1,
+        2,
+        12,
+        34,
+        36
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。09/14已由較清楚明細確認為01、02、12、34、36。",
+      "period": "11999"
+    },
+    {
+      "game": "daily",
+      "date": "2026-09-15",
+      "weekday": "二",
+      "nums": [
+        3,
+        4,
+        16,
+        30,
+        38
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12000"
+    },
+    {
+      "game": "daily",
+      "date": "2026-09-16",
+      "weekday": "三",
+      "nums": [
+        4,
+        5,
+        24,
+        32,
+        33
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12001"
+    },
+    {
+      "game": "daily",
+      "date": "2026-09-17",
+      "weekday": "四",
+      "nums": [
+        11,
+        25,
+        29,
+        30,
+        38
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12002"
+    },
+    {
+      "game": "daily",
+      "date": "2026-09-18",
+      "weekday": "五",
+      "nums": [
+        3,
+        9,
+        11,
+        16,
+        19
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12003"
+    },
+    {
+      "game": "daily",
+      "date": "2026-09-19",
+      "weekday": "六",
+      "nums": [
+        19,
+        29,
+        33,
+        37,
+        39
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12004"
+    },
+    {
+      "game": "daily",
+      "date": "2026-09-20",
+      "weekday": "日",
+      "nums": [
+        1,
+        13,
+        19,
+        27,
+        37
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12005"
+    },
+    {
+      "game": "daily",
+      "date": "2026-09-21",
+      "weekday": "一",
+      "nums": [
+        1,
+        8,
+        10,
+        19,
+        21
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12006"
+    },
+    {
+      "game": "daily",
+      "date": "2026-09-22",
+      "weekday": "二",
+      "nums": [
+        3,
+        5,
+        13,
+        20,
+        36
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12007"
+    },
+    {
+      "game": "daily",
+      "date": "2026-09-23",
+      "weekday": "三",
+      "nums": [
+        4,
+        5,
+        25,
+        27,
+        36
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12008"
+    },
+    {
+      "game": "daily",
+      "date": "2026-09-24",
+      "weekday": "四",
+      "nums": [
+        5,
+        11,
+        12,
+        19,
+        38
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12009"
+    },
+    {
+      "game": "daily",
+      "date": "2026-09-25",
+      "weekday": "五",
+      "nums": [
+        12,
+        15,
+        17,
+        29,
+        31
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12010"
+    },
+    {
+      "game": "daily",
+      "date": "2026-09-26",
+      "weekday": "六",
+      "nums": [
+        6,
+        15,
+        22,
+        33,
+        36
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12011"
+    },
+    {
+      "game": "daily",
+      "date": "2026-09-27",
+      "weekday": "日",
+      "nums": [
+        1,
+        6,
+        7,
+        11,
+        26
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12012"
+    },
+    {
+      "game": "daily",
+      "date": "2026-09-28",
+      "weekday": "一",
+      "nums": [
+        3,
+        15,
+        20,
+        31,
+        39
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12013"
+    },
+    {
+      "game": "daily",
+      "date": "2026-09-29",
+      "weekday": "二",
+      "nums": [
+        8,
+        10,
+        12,
+        14,
+        24
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12014"
+    },
+    {
+      "game": "daily",
+      "date": "2026-09-30",
+      "weekday": "三",
+      "nums": [
+        11,
+        24,
+        30,
+        33,
+        39
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12015"
+    },
+    {
+      "game": "daily",
+      "date": "2026-10-01",
+      "weekday": "四",
+      "nums": [
+        1,
+        2,
+        22,
+        37,
+        39
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。10/01已由較清楚明細確認為01、02、22、37、39。",
+      "period": "12016"
+    },
+    {
+      "game": "daily",
+      "date": "2026-10-02",
+      "weekday": "五",
+      "nums": [
+        13,
+        19,
+        23,
+        28,
+        31
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12017"
+    },
+    {
+      "game": "daily",
+      "date": "2026-10-03",
+      "weekday": "六",
+      "nums": [
+        17,
+        25,
+        26,
+        28,
+        39
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12018"
+    },
+    {
+      "game": "daily",
+      "date": "2026-10-04",
+      "weekday": "日",
+      "nums": [
+        6,
+        10,
+        15,
+        18,
+        33
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12019"
+    },
+    {
+      "game": "daily",
+      "date": "2026-10-05",
+      "weekday": "一",
+      "nums": [
+        16,
+        17,
+        19,
+        31,
+        37
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12020"
+    },
+    {
+      "game": "daily",
+      "date": "2026-10-06",
+      "weekday": "二",
+      "nums": [
+        3,
+        16,
+        18,
+        27,
+        28
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12021"
+    },
+    {
+      "game": "daily",
+      "date": "2026-10-07",
+      "weekday": "三",
+      "nums": [
+        9,
+        10,
+        14,
+        29,
+        32
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12022"
+    },
+    {
+      "game": "daily",
+      "date": "2026-10-08",
+      "weekday": "四",
+      "nums": [
+        10,
+        15,
+        27,
+        30,
+        32
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12023"
+    },
+    {
+      "game": "daily",
+      "date": "2026-10-09",
+      "weekday": "五",
+      "nums": [
+        7,
+        10,
+        25,
+        32,
+        33
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12024"
+    },
+    {
+      "game": "daily",
+      "date": "2026-10-10",
+      "weekday": "六",
+      "nums": [
+        15,
+        20,
+        23,
+        33,
+        35
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12025"
+    },
+    {
+      "game": "daily",
+      "date": "2026-10-11",
+      "weekday": "日",
+      "nums": [
+        2,
+        5,
+        10,
+        14,
+        35
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12026"
+    },
+    {
+      "game": "daily",
+      "date": "2026-10-12",
+      "weekday": "一",
+      "nums": [
+        8,
+        18,
+        26,
+        27,
+        36
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12027"
+    },
+    {
+      "game": "daily",
+      "date": "2026-10-13",
+      "weekday": "二",
+      "nums": [
+        2,
+        9,
+        11,
+        17,
+        18
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12028"
+    },
+    {
+      "game": "daily",
+      "date": "2026-10-14",
+      "weekday": "三",
+      "nums": [
+        3,
+        4,
+        6,
+        11,
+        26
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12029"
+    },
+    {
+      "game": "daily",
+      "date": "2026-10-15",
+      "weekday": "四",
+      "nums": [
+        24,
+        31,
+        34,
+        36,
+        37
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12030"
+    },
+    {
+      "game": "daily",
+      "date": "2026-10-16",
+      "weekday": "五",
+      "nums": [
+        2,
+        3,
+        18,
+        25,
+        30
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12031"
+    },
+    {
+      "game": "daily",
+      "date": "2026-10-17",
+      "weekday": "六",
+      "nums": [
+        8,
+        17,
+        20,
+        26,
+        28
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12032"
+    },
+    {
+      "game": "daily",
+      "date": "2026-10-18",
+      "weekday": "日",
+      "nums": [
+        9,
+        13,
+        15,
+        22,
+        24
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12033"
+    },
+    {
+      "game": "daily",
+      "date": "2026-10-19",
+      "weekday": "一",
+      "nums": [
+        18,
+        22,
+        27,
+        32,
+        35
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12034"
+    },
+    {
+      "game": "daily",
+      "date": "2026-10-20",
+      "weekday": "二",
+      "nums": [
+        9,
+        14,
+        25,
+        28,
+        39
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12035"
+    },
+    {
+      "game": "daily",
+      "date": "2026-10-21",
+      "weekday": "三",
+      "nums": [
+        6,
+        13,
+        18,
+        37,
+        38
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12036"
+    },
+    {
+      "game": "daily",
+      "date": "2026-10-22",
+      "weekday": "四",
+      "nums": [
+        22,
+        23,
+        24,
+        27,
+        35
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12037"
+    },
+    {
+      "game": "daily",
+      "date": "2026-10-23",
+      "weekday": "五",
+      "nums": [
+        13,
+        15,
+        18,
+        28,
+        36
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12038"
+    },
+    {
+      "game": "daily",
+      "date": "2026-10-24",
+      "weekday": "六",
+      "nums": [
+        11,
+        17,
+        19,
+        24,
+        34
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12039"
+    },
+    {
+      "game": "daily",
+      "date": "2026-10-25",
+      "weekday": "日",
+      "nums": [
+        12,
+        19,
+        25,
+        28,
+        36
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12040"
+    },
+    {
+      "game": "daily",
+      "date": "2026-10-26",
+      "weekday": "一",
+      "nums": [
+        8,
+        21,
+        23,
+        25,
+        38
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12041"
+    },
+    {
+      "game": "daily",
+      "date": "2026-10-27",
+      "weekday": "二",
+      "nums": [
+        1,
+        11,
+        14,
+        20,
+        31
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12042"
+    },
+    {
+      "game": "daily",
+      "date": "2026-10-28",
+      "weekday": "三",
+      "nums": [
+        4,
+        11,
+        14,
+        18,
+        21
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12043"
+    },
+    {
+      "game": "daily",
+      "date": "2026-10-29",
+      "weekday": "四",
+      "nums": [
+        4,
+        13,
+        16,
+        23,
+        26
+      ],
+      "drawNums": null,
+      "special": null,
+      "source": "使用者照片3（2026年，順球）＋使用者新提供天天樂開獎明細",
+      "verified": false,
+      "note": "由使用者照片人工整理；年份經使用者確認，未向官方核驗。已與新明細同日號碼交叉核對；期號按明細連續序列記錄。",
+      "period": "12044"
+    }
+  ],
+  "config": {
+    "number": 2,
+    "second": null,
+    "position": 1,
+    "n": 2,
+    "offset": -1,
+    "limit": 6,
+    "threshold": 3,
+    "comparison": "gt",
+    "mode": "all",
+    "absolute": false,
+    "anchor": 0,
+    "order": "sorted",
+    "game": "daily"
+  }
+}
