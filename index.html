@@ -52,6 +52,31 @@ html{scroll-padding-top:90px}body{background:#09151c;color:#e9f5f7;font-family:-
 .rr-hit-cell{text-align:center;min-width:90px}.rr-hit-circle{display:inline-block;width:32px;height:32px;border:5px solid #ffda44;border-radius:50%;box-sizing:border-box;vertical-align:middle;background:transparent;box-shadow:0 0 0 1px #b3830080}.rr-miss{display:inline-block;font-size:32px!important;line-height:1.2;vertical-align:middle}.rr-pending{font-size:18px;color:#c2d0d4}
 #detail-modal.rr-expanded{width:98vw!important;max-width:1550px!important;height:94dvh;max-height:94dvh!important}#detail-modal.rr-expanded #detail-content{max-height:calc(94dvh - 220px);overflow:auto}
 @media(max-width:600px){#detail-modal{width:96vw!important;max-width:96vw!important;padding:14px!important}.rr-evidence-table td,.rr-evidence-table th{padding:16px 10px!important}.rr-evidence-table td:not(:last-child){min-width:160px}.rr-reading-tools{gap:8px}.rr-hit-circle{width:30px;height:30px}}
+</style><style>/* 手機改為上下式核驗卡，不再將兩組號碼擠成左右小欄。桌面維持表格。 */
+@media(max-width:640px){
+ #detail-modal[open]{display:flex;flex-direction:column;width:96vw!important;max-width:96vw!important;max-height:calc(100dvh - 24px)!important;padding:14px!important;box-sizing:border-box}
+ #detail-modal>.panel-head,#detail-modal>.rr-reading-tools,#detail-modal>.shared-dialog-footer{flex:none}
+ #detail-modal #detail-content{flex:1 1 auto;min-height:0;max-height:none!important;overflow:auto;overscroll-behavior:contain;padding:0 2px}
+ .rr-reading-tools{display:grid!important;grid-template-columns:42px 46px 42px minmax(48px,1fr) minmax(72px,1.3fr);gap:6px!important;padding:10px 0!important;margin-bottom:12px!important}
+ .rr-reading-tools>span:first-child{display:none}.rr-reading-tools button{font-size:16px!important;min-width:0!important;width:100%;min-height:42px!important;padding:7px 4px!important;white-space:nowrap}.rr-reading-tools strong{font-size:16px;min-width:0}
+ .rr-evidence-table,.rr-evidence-table tbody{display:block!important;width:100%!important;min-width:0!important;border:0}
+ .rr-evidence-table thead{display:none!important}
+ .rr-evidence-table tbody>tr{display:block!important;position:relative;margin:0 0 16px;padding:16px;border:1px solid #355762;border-radius:14px;background:#112e38}
+ .rr-evidence-table tbody>tr>td{display:block!important;width:auto!important;min-width:0!important;max-width:100%!important;padding:0!important;border:0!important;text-align:left;white-space:normal}
+ .rr-evidence-table tbody>tr>td:first-child{padding-right:42px!important}
+ .rr-evidence-table tbody>tr>td:nth-child(2){margin-top:16px;padding-top:14px!important;border-top:1px solid #31505c!important}
+ .rr-evidence-table tbody>tr>td:first-child:before{content:'來源';color:#a9c5cf;font-size:.8em}
+ .rr-evidence-table tbody>tr>td:nth-child(2):before{content:'目標';color:#a9c5cf;font-size:.8em}
+ .rr-evidence-table .rr-date{display:inline-block;font-size:.85em;line-height:1.5;margin:0 0 8px 10px;white-space:nowrap}
+ .rr-evidence-table .rr-numbers{display:block;margin-top:6px;line-height:1.6;overflow-wrap:anywhere}
+ .rr-evidence-table .rr-numbers.rr-number-set{display:grid;grid-template-columns:repeat(var(--rr-columns,5),minmax(0,1fr));gap:6px;align-items:center;padding:0;overflow:visible}
+ .rr-evidence-table tbody>tr>td:first-child>.rr-number-set{width:calc(100% + 42px)}
+ .rr-evidence-table .rr-number{font-size:var(--rr-font)!important;line-height:1.4;font-weight:750;text-align:center;white-space:nowrap;padding:6px 0;background:#193f4b;border-radius:7px;font-variant-numeric:tabular-nums}
+ .rr-evidence-table .rr-separator{display:none}
+ .rr-evidence-table tbody>tr>td.rr-hit-cell{position:absolute;right:14px;top:14px;width:32px!important;min-width:32px!important;text-align:center}
+ .rr-evidence-table .rr-hit-circle{width:28px;height:28px;border-width:4px}.rr-evidence-table .rr-miss{font-size:28px!important}
+ .rr-card-scroll{overflow-x:visible!important;border:0!important}
+}
 </style></head><body class="mobile-app"><script>/* 只格式化顯示，不變更開獎號碼、計算常數、日期或核驗結果。 */
 (function(root){'use strict';const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const pad=n=>String(n).padStart(2,'0');
@@ -498,7 +523,10 @@ const tools=document.createElement('div');tools.className='rr-reading-tools';too
 function apply(){document.documentElement.style.setProperty('--rr-font',size+'px');tools.querySelector('[data-rr-size]').textContent=size+'px';tools.querySelector('[data-rr-smaller]').disabled=size<=18;tools.querySelector('[data-rr-larger]').disabled=size>=32;try{localStorage.setItem(key,String(size));}catch{}}
 tools.querySelector('[data-rr-smaller]').onclick=()=>{size=Math.max(18,size-2);apply();};tools.querySelector('[data-rr-larger]').onclick=()=>{size=Math.min(32,size+2);apply();};tools.querySelector('[data-rr-reset]').onclick=()=>{size=20;apply();};tools.querySelector('[data-rr-expand]').onclick=e=>{const on=modal.classList.toggle('rr-expanded');e.currentTarget.setAttribute('aria-pressed',String(on));e.currentTarget.textContent=on?'一般視窗':'放大閱讀';};apply();
 })();
+</script><script>/* 只標記顯示欄數，資料與命中狀態保持原樣。 */
+(()=>{const root=document.getElementById('detail-content');if(!root)return;function prepare(){root.querySelectorAll('.rr-evidence-table').forEach(table=>{table.parentElement.classList.add('rr-card-scroll');table.querySelectorAll('.rr-numbers').forEach(box=>{const count=box.querySelectorAll('.rr-number').length;if(count){box.classList.add('rr-number-set');box.style.setProperty('--rr-columns',String(Math.min(6,count)));}});});}new MutationObserver(prepare).observe(root,{childList:true,subtree:true});prepare();})();
 </script></body></html>
+
 
 
 
