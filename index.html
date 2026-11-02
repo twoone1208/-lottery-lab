@@ -81,7 +81,7 @@ html{scroll-padding-top:90px}body{background:#09151c;color:#e9f5f7;font-family:-
 .rr-number.rr-candidate-opened{background:#bd1734!important;color:#fff!important;font-weight:850!important;outline:2px solid #f18ca0;outline-offset:-2px;border-radius:7px;padding:3px 5px}
 .rr-source-note{font-size:.8em;color:#aac3cc;margin-top:9px;line-height:1.7}.rr-color-legend{font-size:16px!important;line-height:1.8!important;color:#b8d0d8}.rr-color-legend .source{color:#ffd080}.rr-color-legend .target{color:#ff9aab}
 @media(max-width:640px){.rr-evidence-table .rr-number.rr-source-selected,.rr-evidence-table .rr-number.rr-candidate-opened{padding:6px 0}.rr-source-note{font-size:16px}}
-</style></head><body class="mobile-app"><script>/* 只格式化顯示，不變更開獎號碼、計算常數、日期或核驗結果。 */
+</style><style>.archive-result{padding:22px 0;border-top:1px solid var(--border);font-size:20px}.archive-outcome{font-weight:800;color:#68e0e4}.archive-balls .archive-hit{background:#ffe068;color:#14232c;outline:3px solid #ffe068}.archive-result h3{font-size:22px}</style></head><body class="mobile-app"><script>/* 只格式化顯示，不變更開獎號碼、計算常數、日期或核驗結果。 */
 (function(root){'use strict';const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const pad=n=>String(n).padStart(2,'0');
 function tokens(value){if(Array.isArray(value))return value.every(n=>Number.isInteger(n)&&n>=1&&n<=49)?value:null;const s=String(value??'').trim();if(!/^\d{1,2}(?:\s*[／/,，.\s]\s*\d{1,2})*$/.test(s))return null;const ns=s.split(/[／/,，.\s]+/).filter(Boolean).map(Number);return ns.length&&ns.every(n=>Number.isInteger(n)&&n>=1&&n<=49)?ns:null;}
@@ -167,7 +167,7 @@ let rows=structuredClone(globalThis.INITIAL_ROWS||globalThis.PHOTO_SEEDS?.[globa
 try{const saved=JSON.parse(localStorage.getItem(STORE)||'null');if(saved){rows=saved.rows.length?Lotto.validate(saved.rows,config.game):[];config=Lotto.settings(saved.config);restored=true;}}catch{toast('已使用原始資料；先前儲存的內容無法讀取。');}
 if(config.game==='539'&&rows.length===SEED.length&&rows.every((r,i)=>r.date===SEED[i].date&&JSON.stringify(r.nums)===JSON.stringify(SEED[i].nums)&&(r.note||'')===(SEED[i].note||'')&&r.source===SEED[i].source)&&(()=>{try{return localStorage.getItem(STORE+'-keep-legacy')!=='true';}catch{return false;}})()){try{localStorage.setItem(STORE+'-before-sync',JSON.stringify({version:2,game:'539',rows,config}));rows=structuredClone(OFFICIAL_SEED);toast('已載入官方核對的261期雙球序；原始檔有7筆差異，更新前備份已保留。');}catch{toast('官方資料已備妥，請先匯出備份再按「載入已核對官方261期」。');}}
 function toast(t){$('#toast').textContent=t;$('#toast').classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>$('#toast').classList.remove('show'),4300);}
-function persist(){try{localStorage.setItem(STORE,JSON.stringify({rows,config}));}catch{toast('此瀏覽器無法儲存，請使用「匯出備份」保留資料。');}}
+function persist(){try{localStorage.setItem(STORE,JSON.stringify({rows,config}));window.dispatchEvent(new CustomEvent('lotto-history-updated'));}catch{toast('此瀏覽器無法儲存，請使用「匯出備份」保留資料。');}}
 function options(el,items){el.innerHTML=items.map(([v,t])=>`<option value="${esc(v)}">${esc(t)}</option>`).join('');}
 options($('#number'),Array.from({length:39},(_,i)=>[i+1,two(i+1)]));options($('#second'),[['','不選擇'],...Array.from({length:39},(_,i)=>[i+1,two(i+1)])]);options($('#offset'),Array.from({length:61},(_,i)=>{const v=i-30;return[v,v===0?'定位當期（0）':v<0?`往上${-v}期／較早（${v}）`:`往下${v}期／較晚（+${v}）`];}));
 function setForm(){for(const [k,v]of Object.entries(config)){const el=$(`#settings [name="${k}"]`);if(el)el.value=v==null?'':String(v);}}
@@ -210,7 +210,7 @@ function renderHistory(){const query=$('#history-search').value.trim().toLowerCa
 $('#history-search').addEventListener('input',()=>{page=1;renderHistory();});$('#prev-page').addEventListener('click',()=>{page--;renderHistory();});$('#next-page').addEventListener('click',()=>{page++;renderHistory();});
 function dataError(e){$('#data-error').textContent=e.message||String(e);$('#data-error').hidden=false;}
 $('#file').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;$('#data-error').hidden=true;$('#import-preview').hidden=true;imported=null;try{if(file.size>20*1024*1024)throw Error('檔案超過20MB。');let incoming,backupConfig=null;if(/\.xlsx$/i.test(file.name)){incoming=await FileImport.readXlsx(await file.arrayBuffer(),{game:config.game});}else if(/\.json$/i.test(file.name)){const data=JSON.parse(await file.text());if(data.game&&data.game!==config.game)throw Error('備份彩種不同，請先切換彩種再匯入。');incoming=data.content?.daily539Res?(config.game==='539'?DrawSync.normalizeOfficial(data).map(r=>({...r,verified:false,source:'官方格式JSON（使用者匯入）'})):(()=>{throw Error('官方539資料不能當成其他彩種。');})()):Array.isArray(data)?data:data.rows;if(data.config){backupConfig=Lotto.settings(data.config);if(backupConfig.game!==config.game)throw Error('備份設定的彩種不同，請先切換彩種。');}}else if(/\.html?$/i.test(file.name))incoming=DrawSync.parseSyuan(await file.text(),config.game);else incoming=FileImport.parseCsv(await file.text(),{game:config.game});incoming=Lotto.validate(incoming,config.game);imported={rows:incoming,config:backupConfig};$('#import-preview').hidden=false;$('#import-preview').innerHTML=`<div class="preview-box"><strong>已讀取${incoming.length.toLocaleString()}筆有效資料</strong><p>${esc(incoming[0].date)} 至 ${esc(incoming.at(-1).date)}（依檔案順序）。${backupConfig?'此檔包含分析設定；取代匯入時一起還原。':''}</p><div>${balls(incoming[0].nums)}</div><button class="button primary" id="apply-import">確認匯入並重新分析 →</button></div>`;$('#apply-import').addEventListener('click',applyImport);}catch(err){dataError(err);}finally{e.target.value='';}});
-function applyImport(){if(!imported)return;try{const replace=$('#import-mode').value==='replace';let next,skipped=0;if(replace){next=imported.rows;if(imported.config)config=imported.config;}else{const keys=new Set(rows.map(r=>r.date+'|'+r.nums.join(',')));next=[...rows];for(const r of imported.rows){const key=r.date+'|'+r.nums.join(',');if(keys.has(key)){skipped++;continue;}keys.add(key);next.push(r);}}rows=Lotto.validate(next,config.game);page=1;setForm();run();renderHistory();$('#import-preview').hidden=true;imported=null;toast(`已匯入資料${skipped?`，略過${skipped}筆日期與五碼完全相同的紀錄`:''}。`);}catch(e){dataError(e);}}
+function applyImport(){if(!imported)return;try{const replace=$('#import-mode').value==='replace';let next,skipped=0;if(replace){next=imported.rows;if(imported.config)config=imported.config;}else{const keys=new Set(rows.map(r=>r.date+'|'+r.nums.join(',')));next=[...rows];for(const r of imported.rows){const key=r.date+'|'+r.nums.join(',');if(keys.has(key)){skipped++;continue;}keys.add(key);next.push(r);}}rows=Lotto.validate(next,config.game);persist();page=1;setForm();run();renderHistory();$('#import-preview').hidden=true;imported=null;toast(`已匯入資料${skipped?`，略過${skipped}筆日期與五碼完全相同的紀錄`:''}。`);}catch(e){dataError(e);}}
 $('#add-draw').addEventListener('submit',e=>{e.preventDefault();try{const row=DailyEntry.prepare(Lotto,rows,config.game,{date:$('#new-date').value,period:$('#new-period').value,nums:$('#new-nums').value,order:$('#new-order').value,special:$('#new-special').value});const next=Lotto.validate([...rows,row],config.game);localStorage.setItem(STORE,JSON.stringify({rows:next,config}));rows=next;$('#new-nums').value='';$('#new-period').value='';$('#new-special').value='';$('#data-error').hidden=true;page=1;run();renderHistory();$('#daily-message').textContent='已儲存 '+Lotto.games[config.game].name+' '+row.date+'，目前共 '+rows.length+' 筆；請匯出備份保留。';toast('當日開獎已儲存，分析已更新。');}catch(err){dataError(err);$('#daily-message').textContent='未新增：'+(err.message||err);}});
 $('#restore-seed').addEventListener('click',()=>{if(!confirm('將取代此瀏覽器的歷史資料並還原原始261筆。建議先匯出備份，確定還原？'))return;localStorage.setItem(BASE_STORE+'-keep-legacy','true');rows=structuredClone(SEED);config={...Lotto.defaults};STORE=BASE_STORE;$('#game').value='539';initGameControls();page=1;setForm();run();renderHistory();toast('已還原原始資料與範例設定。');});
 $('#download-app').addEventListener('click',async()=>{try{if(location.protocol==='file:'){toast('目前這份檔案就是離線版，可直接另存或複製。');return;}const [css,engine,reader,app,sync]=await Promise.all(['style.css','engine.js','xlsx-reader.js','app.js','sync.js'].map(p=>fetch(p).then(r=>{if(!r.ok)throw Error('離線檔讀取失敗。');return r.text();})));const html=document.documentElement.cloneNode(true);html.querySelector('link[rel="stylesheet"]').outerHTML=`<style>${css}</style>`;html.querySelectorAll('script').forEach(s=>s.remove());html.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id==='page-analysis'));html.querySelector('#detail-modal')?.removeAttribute('open');const scripts=[`globalThis.OFFICIAL_SEED=${JSON.stringify(OFFICIAL_SEED)};globalThis.SEED=${JSON.stringify(SEED).replace(/</g,'\\u003c')};globalThis.INITIAL_ROWS=${JSON.stringify(rows).replace(/</g,'\\u003c')};globalThis.INITIAL_CONFIG=${JSON.stringify(config)};`,engine,reader,sync,app].map(s=>'<script>'+s.replace(/<\/script/gi,'<\\/script')+'<\/script>').join('');download('539開放式抓牌系統_離線版.html','<!doctype html>'+html.outerHTML.replace('</body>',()=>scripts+'</body>'),'text/html;charset=utf-8');}catch(e){toast(e.message);}});
@@ -225,8 +225,9 @@ $('#load-official-snapshot').addEventListener('click',()=>{if(config.game!=='539
 function syncError(e){$('#sync-error').textContent=e.message||String(e);$('#sync-error').hidden=false;$('#sync-badge').textContent='更新未完成 · 舊資料保留';}
 async function syncNow(automatic){if(syncController)return;$('#sync-error').hidden=true;$('#sync-preview').hidden=true;const game=config.game;syncController=new AbortController();$('#sync-now').disabled=true;$('#sync-cancel').hidden=false;try{const source=$('#sync-source').value;let incoming;if(source==='official'){if(game!=='539')throw Error('台彩官方539來源不能作為其他彩種資料。');incoming=await DrawSync.official({from:$('#sync-from').value,to:$('#sync-to').value,signal:syncController.signal,onProgress:t=>$('#sync-badge').textContent=t});}else incoming=await DrawSync.syuan({game,signal:syncController.signal});incoming=Lotto.validate(incoming,game);const full=rows.length&&rows.every(r=>/^\d{4}-\d{2}-\d{2}$/.test(r.date)&&r.verified&&r.game===game);if(automatic&&full&&source==='official'){applySynced(incoming,'台灣彩券官方',true);}else previewSync(incoming,source==='official'?'台灣彩券官方':'Syuanrd');}catch(e){syncError(e);}finally{syncController=null;$('#sync-now').disabled=false;$('#sync-cancel').hidden=true;}}
 function previewSync(incoming,label){stagedSync={rows:Lotto.validate(incoming,config.game),label,game:config.game};$('#sync-error').hidden=true;$('#sync-preview').hidden=false;const draw=incoming.filter(r=>r.drawNums).length;$('#sync-badge').textContent='已讀取資料 · 等待套用';$('#sync-preview').innerHTML='<div class="preview-box"><strong>'+esc(Lotto.games[config.game].name)+' · '+incoming.length+'筆歷史紀錄</strong><p>'+esc(incoming[0].date)+' 至 '+esc(incoming.at(-1).date)+'；落球資料 '+draw+'／'+incoming.length+'筆。</p><p>相容的完整日期資料會合併；原始無年份案例不會混入，套用前會保存更新前備份。</p><button class="button primary" id="apply-synced">確認來源並套用計算 →</button></div>';$('#apply-synced').addEventListener('click',()=>{try{if(stagedSync.game!==config.game)throw Error('彩種已改變，請重新讀取。');applySynced(stagedSync.rows,stagedSync.label,false);}catch(e){syncError(e);}});}
-function applySynced(incoming,label,automatic){let next=incoming;const compatible=rows.length&&rows.every(r=>/^\d{4}-\d{2}-\d{2}$/.test(r.date)&&r.source===incoming[0].source&&r.game===config.game);if(compatible)next=DrawSync.finalize([...rows,...incoming]);next=Lotto.validate(next,config.game);try{localStorage.setItem(STORE+'-before-sync',JSON.stringify({version:2,game:config.game,rows,config}));}catch{throw Error('無法保存更新前備份，為避免資料遺失，已停止套用。請先匯出備份。');}if(config.game==='539')localStorage.setItem(STORE+'-keep-legacy','false');rows=next;config.anchor=0;page=1;setForm();run();renderHistory();setSyncState({time:Date.now(),source:label,count:rows.length});loadSyncState();$('#sync-preview').hidden=true;stagedSync=null;toast((automatic?'自動':'')+'更新完成，已重新計算。');}
+function applySynced(incoming,label,automatic){let next=DrawUpdate.merge(rows,incoming,config.game);next=Lotto.validate(next,config.game);try{localStorage.setItem(STORE+'-before-sync',JSON.stringify({version:2,game:config.game,rows,config}));}catch{throw Error('無法保存更新前備份，為避免資料遺失，已停止套用。請先匯出備份。');}if(config.game==='539')localStorage.setItem(STORE+'-keep-legacy','false');rows=next;persist();config.anchor=0;page=1;setForm();run();renderHistory();setSyncState({time:Date.now(),source:label,count:rows.length});loadSyncState();$('#sync-preview').hidden=true;stagedSync=null;toast((automatic?'自動':'')+'更新完成，已重新計算。');}
 
+globalThis.LottoHistorySync={state:()=>({rows:structuredClone(rows),config:{...config}}),apply:(incoming,game)=>{if(game!==config.game)throw Error('彩種已切換');if(syncController||(stagedSync&&!$('#sync-preview').hidden))throw Error('另有更新正在執行或等待確認，請先完成或取消');applySynced(incoming,'雲端開獎庫／Syuanrd公開來源',true);}};
 initGameControls();initSources();window.addEventListener('hashchange',()=>showPage(location.hash.slice(1)||'home'));setForm();run();// 共用球序與原分析設定同步，維持原本儲存鍵與歷史資料。
 $('#shared-order').addEventListener('change',()=>{$('#settings [name="order"]').value=$('#shared-order').value;run();});
 $('#settings [name="order"]').addEventListener('change',()=>{$('#shared-order').value=$('#settings [name="order"]').value;});
@@ -450,28 +451,86 @@ function verify(s,rows){validate(s);const count=s.state.rows.length;if(rows.leng
 const nums=s.list.map(x=>x.number),hits=nums.filter(n=>opened.nums.includes(n));return {status:'verified',targetDate:opened.date,targetPeriod:opened.period||'',opened:[...opened.nums],hits,count:hits.length,verifiedAt:new Date().toISOString(),dateChanged:!!s.dateInfo?.date&&s.dateInfo.date!==opened.date};}
 root.RankArchive={snapshot,validate,verify,signature};
 })(globalThis);
-</script><script>(()=>{'use strict';const $=id=>document.getElementById(id),esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const key='lotto-original-rank-archive-v1',user=(()=>{try{return parent!==window&&parent.Lab3Session?.userId||'local';}catch{return 'local';}})(),storeKey=key+':'+user;
-let active=null,calculating=false;const at=$('rank-status');if(!at)return;
-const panel=document.createElement('section');panel.className='panel rank-archive-panel';panel.innerHTML='<h2>保留推薦號碼・等待開獎核驗</h2><p id="archive-message" role="status">算完可儲存版本，更新開獎資料後核驗。</p><div class="field-grid"><label>這次版本名稱<input id="archive-name" maxlength="80" placeholder="例如：11月2日・8顆・第一版"></label><label>我的已儲存版本<select id="archive-versions"><option value="">請選擇版本</option></select></label></div><div class="archive-buttons"><button id="archive-save" class="button primary" disabled>儲存目前這組號碼</button><button id="archive-restore" class="button">顯示選定版本號碼</button><button id="archive-check" class="button">更新命中核驗</button><button id="archive-export" class="button">匯出推薦備份</button></div><label>匯入我的推薦備份<input id="archive-import" type="file" accept=".json,application/json"></label><div id="archive-records"></div><p class="fine-print">本紀錄儲存在此瀏覽器。開獎資料更新後會重新核對；網站關閉時不在背景抓資料。推薦原始號碼不事後更改。</p>';$('rank-list').after(panel);
+</script><script>/* 推薦核驗修正：依原快照目標日期找開獎，不因補入舊資料而對錯期。 */
+(function(root){'use strict';
+const iso=s=>/^\d{4}-\d{2}-\d{2}$/.test(String(s||''));
+const sameNumbers=(a,b)=>Array.isArray(a)&&Array.isArray(b)&&JSON.stringify([...a].sort((x,y)=>x-y))===JSON.stringify([...b].sort((x,y)=>x-y));
+function verify(s,rows){
+  RankArchive.validate(s);
+  const frozen=s.state.rows,count=frozen.length,cutoff=frozen.at(-1),target=s.dateInfo?.date;
+  const unchanged=rows.length>=count&&RankArchive.signature(rows.slice(0,count))===RankArchive.signature(frozen);
+  let opened,changed=!unchanged;
+  if(iso(cutoff.date)&&iso(target)&&target>cutoff.date){
+    const matches=rows.filter(r=>r.date===target);
+    if(matches.length>1)return {status:'source_changed',message:'目標日期有重複紀錄，請先核對開獎資料。'};
+    opened=matches[0];
+    // 日期只是排程推估；只有原歷史完整未變時，才可沿用原來的下一實際期。
+    if(!opened&&unchanged)opened=rows[count];
+    if(!opened)return {status:'pending',message:'尚未載入目標 '+target+' 的開獎資料；請到「資料」更新目前彩種。'};
+  }else if(unchanged){opened=rows[count];}
+  else return {status:'source_changed',message:'舊推薦缺少可辨識的完整目標日期，歷史也已變更；保留原推薦，請先核對備份。'};
+  if(!opened?.nums||opened.missing)return {status:'pending',message:'目標期尚無完整開獎號碼，等待補齊。'};
+  const max=s.game==='mark6'?49:39,required=s.game==='mark6'?6:5;
+  if(opened.game&&opened.game!==s.game)return {status:'source_changed',message:'開獎彩種不同，停止核驗。'};
+  if(opened.nums.length!==required||new Set(opened.nums).size!==required||opened.nums.some(n=>!Number.isInteger(n)||n<1||n>max))return {status:'pending',message:'目標期號碼不完整或超出範圍，請先核對資料。'};
+  // 同日期同正碼、僅補官方期別或落球資料，不視為原正碼被修正。
+  if(changed&&iso(cutoff.date))changed=frozen.some(old=>{const found=rows.filter(r=>r.date===old.date);return found.length!==1||!!old.missing!==!!found[0].missing||!sameNumbers(old.nums,found[0].nums)||(s.state.config.order==='draw'&&old.drawNums&&JSON.stringify(old.drawNums)!==JSON.stringify(found[0].drawNums));});
+  const hits=s.list.map(x=>x.number).filter(n=>opened.nums.includes(n));
+  return {status:'verified',targetDate:opened.date,targetPeriod:opened.period||'',opened:[...opened.nums],hits,count:hits.length,verifiedAt:new Date().toISOString(),dateChanged:!!target&&target!==opened.date,sourceChanged:changed,message:changed?'原歷史曾修正；僅核對原存號碼與指定日期開獎，不重算原公式。':'',verificationVersion:2};
+}
+RankArchive.verify=verify;
+/* 更新來源不同時合併新增日期，不再整批取代原歷史，避免清掉核驗所需資料。 */
+function merge(existing,incoming,game){
+  if(!existing.length)return [...incoming];
+  if(!existing.every(r=>iso(r.date)))throw Error('目前歷史缺完整年份；請先匯出舊資料，再使用完整日期資料集，避免把推薦對到錯期。');
+  const map=new Map();for(const r of existing){if(map.has(r.date))throw Error('本機歷史日期重複，請先核對：'+r.date);map.set(r.date,r);}
+  const latest=existing.at(-1).date,add=new Map();
+  for(const r of incoming){
+    if(!iso(r.date)||(r.game&&r.game!==game))throw Error('更新資料日期或彩種不正確。');
+    const old=map.get(r.date)||add.get(r.date);
+    if(old){if(!!old.missing!==!!r.missing||!sameNumbers(old.nums,r.nums)||(old.special!=null&&r.special!=null&&old.special!==r.special))throw Error('同日期開獎號碼不同：'+r.date+'。舊資料保留，請先核對來源。');continue;}
+    if(r.date>latest)add.set(r.date,r);
+  }
+  return [...existing,...[...add.values()].sort((a,b)=>a.date.localeCompare(b.date))];
+}
+root.DrawUpdate={merge};
+})(globalThis);
+</script><script>/* 核驗涵蓋自動暫存與命名版本；推薦原始資料、已完成核驗均保留。 */
+(()=>{'use strict';
+const $=id=>document.getElementById(id),esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const user=(()=>{try{return parent!==window&&parent.Lab3Session?.userId||'local';}catch{return 'local';}})(),storeKey='lotto-original-rank-archive-v1:'+user;
+let active=null,calculating=false;const at=$('rank-list');if(!at)return;
+const panel=document.createElement('section');panel.className='panel rank-archive-panel';panel.innerHTML='<h2>已存號碼與開獎核驗</h2><p id="archive-message" role="status">算完會自動儲存，號碼繼續顯示。更新目前彩種的開獎資料後，自動核驗。</p><div class="field-grid"><label>版本名稱<input id="archive-name" maxlength="80" placeholder="例如：11月2日・3顆"></label><label>已儲存版本<select id="archive-versions"><option value="">請選擇版本</option></select></label></div><div class="archive-buttons"><button id="archive-save" class="button primary" disabled>另存／變更版本名稱</button><button id="archive-restore" class="button">顯示選定版本號碼</button><button id="archive-check" class="button">重新核對開獎資料</button><button id="archive-export" class="button">匯出推薦備份</button></div><label>匯入我的推薦備份<input id="archive-import" type="file" accept=".json,application/json"></label><p id="archive-data-status" role="status"></p><div id="archive-records"></div><p class="fine-print">本紀錄只保存在目前瀏覽器。更新開獎資料後會自動核對；核對按鈕不會下載開獎資料。原存號碼與既有核驗不改寫。</p>';at.after(panel);
 function read(){const raw=localStorage.getItem(storeKey);if(!raw)return {format:'rank-archive/1',cache:{},versions:[],checks:{}};const d=JSON.parse(raw);if(d.format!=='rank-archive/1'||!Array.isArray(d.versions)||!d.cache||!d.checks)throw Error('推薦備份格式不正確');return d;}
-function write(d){try{localStorage.setItem(storeKey,JSON.stringify(d));}catch{throw Error('瀏覽器儲存空間不足，號碼仍保留畫面；請先匯出備份。');}}
+function write(d){try{localStorage.setItem(storeKey,JSON.stringify(d));}catch{throw Error('瀏覽器儲存空間不足，號碼仍在畫面；請先匯出備份，再重試儲存。');}}
 const msg=t=>$('archive-message').textContent=t;
-function display(s){RankArchive.validate(s);if(calculating)return msg('目前正在計算，請完成或停止後再切換版本。');if(!globalThis.LottoRankView?.restore(s))return;active=s;$('archive-save').disabled=false;$('archive-name').value=s.name;$('rank-count').value=s.requested;msg('正在顯示「'+s.name+'」：'+s.list.map(x=>String(x.number).padStart(2,'0')).join('、')+'；目標 '+(s.dateInfo?.label||'下一開獎期')+'；球序 '+(s.state.config.order==='draw'?'落球':'順球')+'。這是已保存結果，未重新計算。');}
-function refresh(){try{const d=read(),state=LottoSearchState(),rows=state.rows;let dirty=false;for(const s of d.versions.filter(s=>s.game===state.config.game)){RankArchive.validate(s);if(d.checks[s.id]?.status==='verified')continue;const v=RankArchive.verify(s,rows);if(v.status==='verified'||JSON.stringify(v)!==JSON.stringify(d.checks[s.id])){d.checks[s.id]=v;dirty=true;}}
-if(dirty)write(d);const current=$('archive-versions').value;$('archive-versions').innerHTML='<option value="">請選擇版本</option>'+d.versions.filter(s=>s.game===state.config.game).map(s=>'<option value="'+esc(s.id)+'">'+esc(s.name)+' · '+esc(s.game)+' · '+s.list.length+'顆</option>').join('');$('archive-versions').value=current;
-$('archive-records').innerHTML=d.versions.filter(s=>s.game===state.config.game).slice().reverse().map(s=>{const v=d.checks[s.id],status=v?.status==='verified'?'命中 '+v.count+' 顆：'+(v.hits.map(n=>String(n).padStart(2,'0')).join('、')||'無') :v?.status==='source_changed'?'歷史不同，待核對':'等待開獎';return '<details><summary>'+esc(s.name)+' · '+esc(status)+'</summary><p>目標 '+esc(s.dateInfo?.label||'下一開獎期')+'；建立 '+esc(s.createdAt)+'</p><div class="archive-balls">'+s.list.map(x=>'<strong>'+String(x.number).padStart(2,'0')+'</strong>').join('')+'</div><p>選擇'+s.requested+'顆／實際'+s.list.length+'顆</p>'+(v?.status==='verified'?'<p>實際開獎 '+esc(v.targetDate)+'：'+v.opened.map(n=>String(n).padStart(2,'0')).join('、')+'</p>'+(v.dateChanged?'<p>日期與原先推估不同，依下一實際開獎期核驗。</p>':''):'')+'<button class="button" data-archive-show="'+esc(s.id)+'">顯示這版大號碼與公式</button></details>';}).join('')||'<p>尚未儲存命名版本。算完後按「儲存目前這組號碼」。</p>';
-}catch(e){msg(e.message);}}
+function records(d,game){const all=d.versions.filter(s=>s.game===game),cached=d.cache[game];if(cached&&!all.some(s=>s.id===cached.id))all.push(cached);return all;}
+function display(s){RankArchive.validate(s);if(calculating)return msg('計算中，請完成或停止後再切換版本。');if(!globalThis.LottoRankView?.restore(s))return;active=s;$('archive-save').disabled=false;$('archive-name').value=s.name;$('rank-count').value=s.requested;msg('顯示「'+s.name+'」：'+s.list.map(x=>String(x.number).padStart(2,'0')).join('、')+'；目標 '+(s.dateInfo?.label||'下一開獎期')+'。已還原原存號碼及公式，未重新計算。');}
+function refresh(){try{
+  const d=read(),state=LottoSearchState(),rows=state.rows,all=records(d,state.config.game);let dirty=false;
+  for(const s of all){RankArchive.validate(s);if(d.checks[s.id]?.status==='verified')continue;const v=RankArchive.verify(s,rows);if(JSON.stringify(v)!==JSON.stringify(d.checks[s.id])){d.checks[s.id]=v;dirty=true;}}
+  if(dirty)write(d);
+  const current=$('archive-versions').value;$('archive-versions').innerHTML='<option value="">請選擇版本</option>'+all.map(s=>'<option value="'+esc(s.id)+'">'+esc(s.name)+' · '+s.list.length+'顆</option>').join('');$('archive-versions').value=current;
+  const done=all.filter(s=>d.checks[s.id]?.status==='verified').length;
+  $('archive-data-status').textContent='目前彩種：'+({'539':'今彩539',daily:'天天樂',mark6:'六合彩'}[state.config.game])+'；本機開獎資料截至 '+(rows.at(-1)?.date||'尚無資料')+'。已核驗 '+done+' 組／待核對 '+(all.length-done)+' 組。';
+  $('archive-records').innerHTML=all.slice().reverse().map(s=>{
+    const v=d.checks[s.id],verified=v?.status==='verified',status=verified?'命中 '+v.count+' 顆：'+(v.hits.map(n=>String(n).padStart(2,'0')).join('、')||'無'):v?.status==='source_changed'?'需要核對資料':'等待開獎／資料尚未載入';
+    const warning=verified&&v.sourceChanged?'原歷史曾修正；這裡僅對照原存號碼，不重算公式，也不當作原始資料未變的成效樣本。':v?.message||'';
+    return '<article class="archive-result"><h3>'+esc(s.name)+'</h3><p>目標 '+esc(s.dateInfo?.label||'下一開獎期')+'</p><div class="archive-balls">'+s.list.map(x=>'<strong'+(verified&&v.hits.includes(x.number)?' class="archive-hit"':'')+'>'+String(x.number).padStart(2,'0')+'</strong>').join('')+'</div><p class="archive-outcome" role="status">'+esc(status)+'</p>'+(verified?'<p>實際開獎 '+esc(v.targetDate)+'：'+v.opened.map(n=>String(n).padStart(2,'0')).join('、')+'</p>':'')+(warning?'<p>'+esc(warning)+'</p>':'')+(v?.dateChanged?'<p>日期與原推估不同，依原歷史後的下一實際期核對。</p>':'')+'<details><summary>版本資料</summary><p>建立 '+esc(s.createdAt)+'；推薦'+s.requested+'顆／實際'+s.list.length+'顆</p></details><button class="button" data-archive-show="'+esc(s.id)+'">顯示這版大號碼與公式</button></article>';
+  }).join('')||'<p>尚無已完成的推薦。完成一次計算後會自動儲存等待核驗。</p>';
+  return true;
+}catch(e){msg(e.message);return false;}}
 function restoreCurrent(){if(calculating)return;try{const d=read(),state=LottoSearchState(),s=d.cache[state.config.game]||(active?.game===state.config.game?active:null);if(s)display(s);else{active=null;$('archive-save').disabled=true;$('rank-list').textContent='此彩種還沒有完成的推薦，請計算一次；完成後會保留。';}refresh();}catch(e){msg(e.message);}}
-window.addEventListener('rank-calculation-start',()=>{calculating=true;$('archive-save').disabled=true;msg('計算中。上次儲存的版本仍保留；本次完成後會顯示新號碼。');});
-window.addEventListener('rank-calculation-cancel',()=>{calculating=false;msg('本次尚未完整算完，未儲存為新版本。可選擇先前版本直接還原。');});
-window.addEventListener('rank-calculation-complete',e=>{calculating=false;try{const detail=e.detail;active=RankArchive.snapshot(detail,(detail.dateInfo?.label||'下一期')+'・'+detail.list.length+'顆');const d=read();d.cache[active.game]=active;write(d);$('archive-save').disabled=false;$('archive-name').value=active.name;msg('本次號碼已保留：'+active.list.map(x=>String(x.number).padStart(2,'0')).join('、')+'。切換模式後可直接還原；按下方按鈕另存為等待開獎的版本。');refresh();}catch(e){$('archive-save').disabled=!active;msg(e.message);}});
-$('archive-save').onclick=()=>{try{if(!active||calculating)throw Error('請先算完或顯示已儲存版本。');const d=read();const wanted=$('archive-name').value.trim()||active.name;const exists=d.versions.some(s=>s.id===active.id);if(!exists||wanted!==active.name){const copy=JSON.parse(JSON.stringify(active));if(exists)copy.id=crypto.randomUUID();copy.name=wanted;RankArchive.validate(copy);d.versions.push(copy);write(d);active=copy;}refresh();msg('已儲存「'+active.name+'」：'+active.list.map(x=>String(x.number).padStart(2,'0')).join('、')+'；等待開獎，號碼繼續顯示在下方。');}catch(e){msg(e.message);}};
-$('archive-restore').onclick=()=>{try{const s=read().versions.find(s=>s.id===$('archive-versions').value);if(!s)throw Error('請先選擇一個版本');display(s);}catch(e){msg(e.message);}};
-$('archive-records').onclick=e=>{const b=e.target.closest('[data-archive-show]');if(!b)return;try{const s=read().versions.find(s=>s.id===b.dataset.archiveShow);if(s)display(s);}catch(e){msg(e.message);}};
-$('archive-check').onclick=()=>{refresh();msg('已依目前載入的開獎資料核對；未開獎的版本保持等待。');};
+window.addEventListener('rank-calculation-start',()=>{calculating=true;$('archive-save').disabled=true;msg('計算中，先前版本仍保留。');});
+window.addEventListener('rank-calculation-cancel',()=>{calculating=false;msg('本次未完整算完，沒有建立新版本。先前號碼仍可還原。');});
+window.addEventListener('rank-calculation-complete',e=>{calculating=false;try{active=RankArchive.snapshot(e.detail,(e.detail.dateInfo?.label||'下一期')+'・'+e.detail.list.length+'顆');const d=read(),previous=d.cache[active.game];if(previous&&!d.versions.some(s=>s.id===previous.id))d.versions.push(previous);d.cache[active.game]=active;d.versions.push(active);write(d);$('archive-save').disabled=false;$('archive-name').value=active.name;refresh();msg('已自動儲存：'+active.list.map(x=>String(x.number).padStart(2,'0')).join('、')+'；目標 '+(active.dateInfo?.label||'下一期')+'，等待開獎。');}catch(e){$('archive-save').disabled=!active;msg(e.message);}});
+$('archive-save').onclick=()=>{try{if(!active||calculating)throw Error('請先算完或顯示已存版本。');const d=read(),wanted=$('archive-name').value.trim()||active.name,exists=d.versions.some(s=>s.id===active.id);if(!exists||wanted!==active.name){const copy=JSON.parse(JSON.stringify(active));if(exists)copy.id=crypto.randomUUID();copy.name=wanted;RankArchive.validate(copy);d.versions.push(copy);write(d);active=copy;}refresh();msg('已儲存「'+active.name+'」，原存號碼保持不變。');}catch(e){msg(e.message);}};
+$('archive-restore').onclick=()=>{try{const d=read(),s=records(d,LottoSearchState().config.game).find(s=>s.id===$('archive-versions').value);if(!s)throw Error('請先選擇版本');display(s);}catch(e){msg(e.message);}};
+$('archive-records').onclick=e=>{const b=e.target.closest('[data-archive-show]');if(!b)return;try{const d=read(),s=records(d,LottoSearchState().config.game).find(s=>s.id===b.dataset.archiveShow);if(s)display(s);}catch(e){msg(e.message);}};
+$('archive-check').onclick=()=>{if(refresh())msg('核對完成。請查看各版本的命中結果；尚未載入目標日期開獎的版本，請先到「資料」更新。');};
 $('archive-export').onclick=()=>{try{const url=URL.createObjectURL(new Blob([JSON.stringify(read(),null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='推薦號碼與核驗備份.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}catch(e){msg(e.message);}};
-$('archive-import').onchange=async e=>{try{const f=e.target.files[0];if(!f||f.size>5000000)throw Error('備份需小於5MB');const raw=JSON.parse(await f.text());if(raw.format!=='rank-archive/1'||!Array.isArray(raw.versions)||raw.versions.length>100)throw Error('推薦備份格式不正確');const d=read();for(const s of raw.versions){RankArchive.validate(s);if(!d.versions.some(x=>x.id===s.id))d.versions.push(s);}write(d);refresh();msg('已合併匯入版本。匯入的命中紀錄不直接採信，會依目前開獎資料重新核對。');}catch(e){msg(e.message);}};
+$('archive-import').onchange=async e=>{try{const f=e.target.files[0];if(!f||f.size>5000000)throw Error('備份需小於5MB');const raw=JSON.parse(await f.text());if(raw.format!=='rank-archive/1'||!Array.isArray(raw.versions)||raw.versions.length>100)throw Error('推薦備份格式不正確');const d=read(),all=[...raw.versions,...Object.values(raw.cache||{})];for(const s of all){RankArchive.validate(s);if(!d.versions.some(x=>x.id===s.id))d.versions.push(s);}write(d);refresh();msg('已合併匯入版本，依目前本機開獎重新核對。');}catch(e){msg(e.message);}};
+let timer;window.addEventListener('lotto-history-updated',()=>{clearTimeout(timer);timer=setTimeout(refresh,100);});
 document.addEventListener('click',e=>{if(e.target.closest('[data-page]'))setTimeout(restoreCurrent,0);});window.addEventListener('hashchange',()=>setTimeout(restoreCurrent,0));document.addEventListener('change',e=>{if(e.target.id==='game')setTimeout(restoreCurrent,0);});
 setTimeout(restoreCurrent,0);setInterval(()=>{if(document.visibilityState==='visible')refresh();},5000);
 })();
@@ -541,7 +600,63 @@ const html=paint(ReadableResults.dateNumbers(date,values),values,displayRule,'so
 function target(date,value,r){return paint(ReadableResults.dateNumbers(date,value),value,r,'target');}
 root.EvidenceColors={source,target,paint};
 })(globalThis);
+</script><script>/* 自動更新只接續原資料，不更換舊資料集，來源不足以銜接時停止。 */
+(function(root){'use strict';
+function plan(existing,payload,game){
+  if(payload?.format!=='lotto-public-draws/1'||payload.game!==game||!Array.isArray(payload.rows)||payload.rows.length<1||payload.rows.length>40)throw Error('雲端開獎格式或彩種不正確，舊資料保留。');
+  const count=game==='mark6'?6:5,max=game==='mark6'?49:39,seen=new Set();
+  const today=new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Taipei'}).format(new Date());
+  const list=payload.rows.map(r=>{
+    if(r.game!==game||!/^\d{4}-\d{2}-\d{2}$/.test(r.date)||new Date(r.date+'T00:00:00Z').toISOString().slice(0,10)!==r.date||r.date>today||seen.has(r.date)||!Array.isArray(r.nums)||r.nums.length!==count||new Set(r.nums).size!==count||r.nums.some(n=>!Number.isInteger(n)||n<1||n>max))throw Error('雲端日期或號碼未通過檢查，舊資料保留。');
+    seen.add(r.date);const nums=[...r.nums].sort((a,b)=>a-b);
+    if(r.drawNums&&(r.drawNums.length!==count||JSON.stringify([...r.drawNums].sort((a,b)=>a-b))!==JSON.stringify(nums)))throw Error('雲端落球資料不一致，停止更新。');
+    if(r.special!=null&&(game!=='mark6'||!Number.isInteger(r.special)||r.special<1||r.special>max||nums.includes(r.special)))throw Error('雲端特別號不正確，停止更新。');
+    return {...r,nums,sortedNums:nums,drawNums:r.drawNums?[...r.drawNums]:null,verified:false};
+  }).sort((a,b)=>a.date.localeCompare(b.date));
+  if(payload.latest!==list.at(-1).date)throw Error('雲端截止日期與內容不同，停止更新。');
+  if(!existing.length)return {incoming:list,added:list.length,latest:payload.latest};
+  const cutoff=existing.at(-1);if(!/^\d{4}-\d{2}-\d{2}$/.test(cutoff.date))throw Error('本機歷史缺完整年份，請先匯出備份並匯入完整日期歷史，再啟用自動更新。');
+  if(cutoff.date>payload.latest)return {incoming:[],added:0,latest:payload.latest,localAhead:true};
+  const anchor=list.find(r=>r.date===cutoff.date);
+  if(!anchor)throw Error('來源僅提供最近40期，無法銜接本機 '+cutoff.date+'。請到「資料」補齊中間開獎後再試。');
+  const same=JSON.stringify([...cutoff.nums].sort((a,b)=>a-b))===JSON.stringify(anchor.nums);
+  if(!same||cutoff.missing||(cutoff.special!=null&&anchor.special!=null&&cutoff.special!==anchor.special))throw Error('銜接期 '+cutoff.date+' 號碼不同。原資料與推薦保留，請先核對來源。');
+  const incoming=list.filter(r=>r.date>cutoff.date);return {incoming,added:incoming.length,latest:payload.latest};
+}
+root.CloudDrawUpdate={plan};
+})(globalThis);
+</script><script>/* 原版網頁開啟時自動接收排程已入庫的開獎；不在會員端啟動研究工作。 */
+(()=>{'use strict';
+const ENDPOINT='https://ehvwtmrbgnyjilsvxxlm.supabase.co/functions/v1/lotto-public-draws',KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVodnd0bXJiZ255amlsc3Z4eGxtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMyODYwODUsImV4cCI6MjEwODg2MjA4NX0.kUMhJFSxu5jesFcedVmRa8PKuVDZN1uJjUxXLt5cW8g";
+const host=document.querySelector('#page-data');if(!host)return;
+const panel=document.createElement('section');panel.className='panel cloud-update-panel';panel.innerHTML='<h2>自動更新與推薦核驗</h2><label><input type="checkbox" id="cloud-auto"> 開啟網頁後，自動更新目前彩種</label><p id="cloud-update-status" role="status">檢查開獎資料中…</p><button class="button primary" id="cloud-update-now">立即更新並核驗</button><details><summary>來源與更新方式</summary><p>雲端每小時檢查三彩種公開來源；此頁開啟或切換彩種時同步，開啟期間每5分鐘檢查。尚未取得新一期不代表同步失敗。來源為Syuanrd公開歷史API，非台彩官方逐期核驗。最近40期無法銜接時會停止，請先補齊歷史。關閉此頁後，雲端仍更新開獎；本機推薦在下次開啟時核驗。</p><a href="https://www.taiwanlottery.com/lotto/result/daily_cash/" target="_blank" rel="noopener">今彩539官方查詢 ↗</a></details>';host.prepend(panel);
+const status=document.getElementById('cloud-update-status'),auto=document.getElementById('cloud-auto'),button=document.getElementById('cloud-update-now'),setting='lotto-cloud-auto-update-v1';
+try{auto.checked=localStorage.getItem(setting)!=='off';}catch{auto.checked=true;}
+let busy=false,lastGame='',lastStart=0;
+function note(t){status.textContent=t;const rank=document.getElementById('archive-data-status');if(rank)rank.title=t;}
+async function update(manual=false){
+  if(busy||(!manual&&!auto.checked))return;
+  const bridge=globalThis.LottoHistorySync;if(!bridge)return note('更新模組尚未載入，請重新整理頁面。');
+  const state=bridge.state(),game=state.config.game;if(!manual&&game===lastGame&&Date.now()-lastStart<60000)return;
+  busy=true;button.disabled=true;lastStart=Date.now();lastGame=game;note('正在取得最新開獎資料…');
+  try{
+    const response=await fetch(ENDPOINT+'?game='+encodeURIComponent(game),{method:'GET',mode:'cors',credentials:'omit',headers:{apikey:KEY,Authorization:'Bearer '+KEY},signal:AbortSignal.timeout(18000)});
+    if(!response.ok)throw Error('雲端連線失敗（'+response.status+'），稍後可按「立即更新並核驗」。');
+    const payload=await response.json(),plan=CloudDrawUpdate.plan(state.rows,payload,game);
+    const current=bridge.state();if(current.config.game!==game||JSON.stringify(current.rows)!==JSON.stringify(state.rows))throw Error('資料或彩種已切換，本次更新未套用；請重新更新目前彩種。');
+    if(plan.added)bridge.apply(plan.incoming,game);
+    window.dispatchEvent(new CustomEvent('lotto-history-updated'));
+    note(plan.localAhead?'本機資料比雲端新，保留本機號碼；已重新核驗已存推薦。':(plan.added?'已新增 '+plan.added+' 期；':'目前沒有更新的開獎；')+'雲端資料截至 '+plan.latest+'。已觸發已存推薦核驗。');
+  }catch(e){note('更新未完成：'+(e.message||String(e))+' 本機資料與已存推薦保留。');}
+  finally{busy=false;button.disabled=false;}
+}
+button.onclick=()=>update(true);auto.onchange=()=>{try{localStorage.setItem(setting,auto.checked?'on':'off');}catch{}if(auto.checked)update(true);else note('已關閉自動更新，可隨時按「立即更新並核驗」。');};
+document.getElementById('game')?.addEventListener('change',()=>setTimeout(()=>update(),200));
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')update();});
+setTimeout(()=>update(),1200);setInterval(()=>{if(document.visibilityState==='visible')update();},5*60*1000);
+})();
 </script></body></html>
+
 
 
 
