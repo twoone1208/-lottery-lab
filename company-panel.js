@@ -6,6 +6,7 @@ export async function mount(client,ctx,game,root){
  const rpc=async(name,args={})=>{const r=await client.rpc(name,args);if(r.error)throw Error(r.error.message);return r.data;};
  const current=await rpc('lab3_company_context');if(!current.company_role){root.textContent='此區僅供公司授權人員，付費方案不包含公司研究存取。';return;}
  const [publications,predictions]=await Promise.all([rpc('lab3_company_publication',{action:'list',p:{}}),rpc('lab3_research_api',{action:'predictions',p:{}})]);
+ if(location.hash!=='#company')return;
  const role=current.company_role,owner=role==='owner',approve=['owner','admin'].includes(role),share=['owner','admin','broadcaster'].includes(role);
  root.innerHTML=`<div class="panel"><h2>飛樂公司私有研究</h2><p>內部身分：${esc({owner:'總管理員',admin:'管理員',broadcaster:'授權主播',researcher:'授權研究員'}[role])} · 免費內測 · 付款關閉</p><p>私人研究與對外發布分開。核准不等於公開；發布只包含選定號碼，不包含公式。</p><p data-company-status role="status"></p></div>
  ${owner?'<details class="panel"><summary>公司人員授權／撤銷</summary><form data-staff class="form"><label>已啟用會員Email<input name="email" type="email" required></label><label>公司身分<select name="role"><option value="broadcaster">授權主播</option><option value="researcher">授權研究員</option><option value="admin">管理員</option></select></label><label>狀態<select name="enabled"><option value="true">啟用</option><option value="false">撤銷存取</option></select></label><button>儲存公司身分</button></form><button data-staff-list>查看公司人員</button><div data-staff-result></div></details>':''}
