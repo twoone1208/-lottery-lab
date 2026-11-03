@@ -1,5 +1,6 @@
+import {exploreConditions} from './condition-discovery.mjs';
 // 共用純運算模組：瀏覽器、測試及雲端使用同一份；無eval、無網路、無會員資料。
-export const ENGINE='research-2.0.0';
+export const ENGINE='research-2.1.0';
 const int=(x,min,max,label)=>{if(!Number.isInteger(x)||x<min||x>max)throw Error(label+'超出範圍');return x;};
 const uniq=a=>[...new Set(a)].sort((a,b)=>a-b);
 export const wrap=(n,m)=>((n-1)%m+m)%m+1;
@@ -23,6 +24,12 @@ export function canonical(input){
   if(op==='absolute'&&sources.length!==2)throw Error('絕對差需兩個來源');
  }
  else if(o.kind==='staircase'){if(start!==end||need!==1)throw Error('階梯以單期單碼核驗');output={kind:'staircase',lag:int(o.lag,1,30,'階梯期距'),phase:int(o.phase,0,count-1,'階梯相位'),step:int(o.step,1,count-1,'階梯步長'),constant:int(o.constant,0,max,'固定合數'),cycle:!!o.cycle};}
+ else if(o.kind==='staircase_extension'){
+  if(start!==end||start!==o.lag||!['pair','plus_tail','combined'].includes(o.channel)||need!==(o.channel==='combined'?2:1))throw Error('階梯延伸需固定期距及獨立核驗門檻');
+  if(!['absolute','borrow_max'].includes(o.negative??'absolute'))throw Error('減法規則不正確');
+  if(![-1,1].includes(o.direction))throw Error('階梯方向需為正一或負一');
+  output={kind:'staircase_extension',channel:o.channel,lag:int(o.lag,1,30,'階梯期距'),origin_seq:int(o.origin_seq,1,20000,'來源起點'),origin_position:int(o.origin_position,1,count,'來源起點順位'),direction:o.direction,constant:int(o.constant,0,max,'加減常數'),negative:o.negative??'absolute',boundary:'stop',cycle:false};
+ }
  else throw Error('未知公式類型');
  const bound=position?int(trigger.number??trigger.numbers[0],1,max,'定位綁定號碼'):null;if(position&&!numbers.includes(bound))throw Error('定位順位綁定號碼需在定位條件內');
  if(output.cycle&&'constant' in output)output.constant=((output.constant%max)+max)%max;
@@ -49,6 +56,14 @@ function prepared(d,by,anchor,cutoff){
   const seq=anchor+d.window.start-o.lag,pos=((seq-1)*o.step+o.phase)%count+1,b=balls(by.get(seq),t.order);if(!b||seq>cutoff||seq>=anchor+d.window.start)return null;
   const value=o.constant-b[pos-1];candidates=[o.cycle?wrap(value,m):value].filter(n=>n>=1&&n<=m);sources=[{seq,position:pos,value:b[pos-1]}];
  }
+ if(o.kind==='staircase_extension'){
+  const seq=anchor,pos=o.origin_position+(seq-o.origin_seq)*o.direction;
+  if(seq<o.origin_seq||pos<1||pos>count||seq>cutoff)return null;
+  const selected=balls(by.get(seq),t.order);if(!selected)return null;
+  const value=selected[pos-1],minus=o.negative==='borrow_max'?(value<o.constant?value+m-o.constant:value-o.constant):Math.abs(value-o.constant),plus=value+o.constant,pair=uniq([minus,plus].filter(n=>n>=1&&n<=m)),tail=plus%10,tailNumbers=Array.from({length:m},(_,i)=>i+1).filter(n=>n%10===tail);
+  candidates=o.channel==='pair'?pair:o.channel==='plus_tail'?tailNumbers:uniq([...pair,...tailNumbers]);
+  sources=[{seq,position:pos,value,constant:o.constant,minus_raw:value-o.constant,minus,plus,tail,channel:o.channel}];
+ }
  if(!candidates.length)return null;
  return {anchor,cutoff,target_start:anchor+d.window.start,target_end:anchor+d.window.end,candidates:uniq(candidates),need:d.window.need,sources,metric:d.window.start!==d.window.end?'window_group':candidates.length===1?'single_number':'same_draw_group'};
 }
@@ -65,6 +80,7 @@ export function backtest(d,raw,{end=Infinity,from=1}={}){
 }
 // 有界搜尋，逐一回傳進度/繼續游標；不把截斷搜尋稱為所有可能公式。
 export function explore(raw,game,options={}){
+ if(options.family==='conditions')return exploreConditions(raw,game,options,{rowsOf,backtest,canonical,key,ENGINE});
  const rows=rowsOf(raw),max=game==='mark6'?49:39,count=game==='mark6'?6:5,latest=rows.at(-1)?.seq||0;
  const trainEnd=options.trainEnd??Math.floor(latest*.7),minSamples=options.minSamples??5,minHits=options.minHits??3;
  const offsets=options.offsets||Array.from({length:60},(_,i)=>i-30),lags=options.lags||Array.from({length:30},(_,i)=>i+1),positions=options.positions||Array.from({length:count},(_,i)=>i+1);
@@ -103,3 +119,7 @@ export function rankEvidence(evidence,target,max=39){
  }
  return [...map.values()].map(r=>({number:r.number,score:[...r.families.values()].reduce((s,x)=>s+x.score,0),families:r.families.size,group_support:r.group_support.length,evidence:[...r.families.values()].map(x=>x.e)})).filter(r=>r.families).sort((a,b)=>b.score-a.score||a.number-b.number);
 }
+
+
+
+
