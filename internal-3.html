@@ -85,9 +85,9 @@ window.addEventListener('message',async e=>{if(e.origin!==location.origin||e.sou
 
 
 if(!globalThis.supabase){status('會員程式未載入，請檢查檔案是否完整。');return;}if(location.protocol==='file:')status('請透過部署後的HTTPS網址操作會員及雲端功能；本機檔案只供檢查。');client=supabase.createClient(LAB3_CONFIG.url,LAB3_CONFIG.key,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storageKey:'lab3-internal-auth'}});const incomingAuth=new URLSearchParams(location.hash.slice(1));if(incomingAuth.has('error')||incomingAuth.has('error_code'))status('驗證連結失效或未完成。請填Email並按「重新寄送驗證信」，只使用最新一封信；若跳到localhost，請聯絡管理員修正回站設定。');window.Lab3Session={userId:null};client.auth.onAuthStateChange((event,s)=>{session=s;if(event==='PASSWORD_RECOVERY'){recovering=true;$('newPasswordForm').hidden=false;$('auth').hidden=false;$('workspace').hidden=true;status('請在下方設定新密碼。');}if(event==='SIGNED_OUT'){epoch++;ctx=null;patterns=[];forecasts=[];rankings=[];draws=[];$('content').innerHTML='';$('workspace').hidden=true;$('auth').hidden=false;}});client.auth.getSession().then(async r=>{session=r.data.session;if(session&&!recovering){try{await refresh()}catch(e){status(e.message)}}});route();
-function companyPage(){setTimeout(()=>{if(page==='company'&&ctx&&window.Lab3Company)window.Lab3Company.mount(client,ctx,game,$('content')).catch(e=>status(e.message));},0);return '<p>正在確認公司權限…</p>';}
+function companyPage(){import('./company-panel.js?v=p0-20261103-2').then(m=>{if(page==='company'&&ctx)return m.mount(client,ctx,game,$('content'));}).catch(e=>status(e.message));return '<p>正在確認公司權限…</p>';}
 function researchPage(){setTimeout(()=>{if(page==='research'&&ctx&&window.Lab3Research)window.Lab3Research.mount(client,ctx,game,$('content')).catch(e=>status(e.message));},0);return '<p>正在載入研究模組…</p>';}
 window.addEventListener('lab3-research-ready',()=>{if(page==='research')render();});
 })();
 
-</script><script type="module" src="./research-panel.js?v=p0-20261103"></script><script type="module" src="./company-panel.js?v=p0-20261103"></script></body></html>
+</script><script type="module" src="./research-panel.js?v=p0-20261103"></script><script type="module" src="./company-panel.js?v=p0-20261103-2"></script></body></html>
