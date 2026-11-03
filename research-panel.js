@@ -7,6 +7,7 @@ export async function mount(client,ctx,game,root){
  const edge=async body=>{const r=await client.functions.invoke('lab3-research-engine',{body});if(r.error)throw r.error;if(r.data?.error)throw Error(r.data.error);return r.data;};
  let busy=false;const act=fn=>async()=>{if(busy)return;busy=true;const msg=root.querySelector('[data-message]');msg.textContent='處理中…';try{await fn();}catch(e){msg.textContent=e.message||String(e);}finally{busy=false;}};
  const [versions,forecasts,rankings,terms]=await Promise.all([api('list'),api('predictions'),ctx.consented?api('rankings',{game}):Promise.resolve([]),api('terms')]);
+ if(!root.isConnected)return;
  const adm=['owner','admin','researcher'].includes(ctx.company_role),count=game==='mark6'?6:5;
  root.innerHTML=`<div class="notice">條件規律、跨期來源與階梯公式獨立研究。先回測，再追蹤，累積前瞻核驗後才能核准。觀察窗/候選組命中率不作單碼機率。</div><p data-message role="status"></p>${!terms.accepted?'<p class="notice">新增前請到個人中心閱讀並主動同意新版公告。</p>':''}
  <div class="toolbar"><button data-export>匯出自己的研究版本</button><label>主動匯入JSON版本<input data-import type="file" accept="application/json,.json" ${terms.accepted?'':'disabled'}></label></div>
@@ -50,4 +51,5 @@ export async function mount(client,ctx,game,root){
  const tick=root.querySelector('[data-tick]');if(tick)tick.onclick=act(async()=>{await edge({mode:'tick'});await mount(client,ctx,game,root);});
 }
 window.Lab3Research={mount};window.dispatchEvent(new Event('lab3-research-ready'));
+
 
