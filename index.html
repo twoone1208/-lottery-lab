@@ -613,7 +613,7 @@ function read(){const raw=localStorage.getItem(storeKey);if(!raw)return {format:
 function write(d){try{localStorage.setItem(storeKey,JSON.stringify(d));}catch{throw Error('瀏覽器儲存空間不足，號碼仍在畫面；請先匯出備份，再重試儲存。');}}
 const msg=t=>$('archive-message').textContent=t;
 function records(d,game){const all=d.versions.filter(s=>s.game===game),cached=d.cache[game];if(cached&&!all.some(s=>s.id===cached.id))all.push(cached);return all;}
-function display(s,reveal=false){RankArchive.validate(s);if(calculating)return msg('計算中，請完成或停止後再切換版本。');if(typeof globalThis.LottoRankView?.restore!=='function')throw Error('號碼展示尚未就緒，請稍後重試。');if(!globalThis.LottoRankView.restore(s))throw Error('推薦正在計算中，請先完成或停止後再顯示版本。');active=s;localStorage.setItem(storeKey+':view:'+s.game,s.id);$('archive-versions').value=s.id;if(reveal){const list=$('rank-list');list.setAttribute('tabindex','-1');list.scrollIntoView({behavior:'smooth',block:'start'});list.focus({preventScroll:true});}$('archive-save').disabled=false;$('archive-name').value=s.name;$('rank-count').value=s.requested;msg('顯示「'+s.name+'」：'+s.list.map(x=>String(x.number).padStart(2,'0')).join('、')+'；目標 '+(s.dateInfo?.label||'下一開獎期')+'。已還原原存號碼及公式，未重新計算。');}
+function display(s,reveal=false){RankArchive.validate(s);if(calculating)return msg('計算中，請完成或停止後再切換版本。');if(typeof globalThis.LottoRankView?.restore!=='function')throw Error('號碼展示尚未就緒，請稍後重試。');if(!globalThis.LottoRankView.restore(s))throw Error('推薦正在計算中，請先完成或停止後再顯示版本。');active=s;localStorage.setItem(storeKey+':view:'+s.game,s.id);$('archive-versions').value=s.id;if(reveal){showPage('rank');const list=$('rank-list');list.setAttribute('tabindex','-1');list.scrollIntoView({behavior:'smooth',block:'start'});list.focus({preventScroll:true});}$('archive-save').disabled=false;$('archive-name').value=s.name;$('rank-count').value=s.requested;msg('顯示「'+s.name+'」：'+s.list.map(x=>String(x.number).padStart(2,'0')).join('、')+'；目標 '+(s.dateInfo?.label||'下一開獎期')+'。已還原原存號碼及公式，未重新計算。');}
 function archiveCheck(d,id){return d.checkRevisions?.[id]?.at(-1)||d.checks[id];}
 function refresh(){try{
   const d=read(),state=LottoSearchState(),rows=state.rows,all=records(d,state.config.game);if(!state.config.dataReady){$('archive-data-status').textContent='中央資料尚未同步；原推薦保留，暫不重新核驗。';return false;}let dirty=false;
@@ -860,7 +860,7 @@ function choices(){const game=LottoSearchState().config.game,g=Lotto.games[game]
  const originalSummary=globalThis.FormulaVisual.summary;globalThis.FormulaVisual.summary=r=>r.chainSpec?'<div class="chain-summary">'+esc(summary(r.chainSpec))+'</div><div class="fv-meta">歷史 '+r.hits+'／'+r.samples+'組；'+r.outputs.length+'中'+r.need+'整組條件</div>':originalSummary(r);
  $('game').addEventListener('change',choices);for(const ev of ['central-dataset-ready','lotto-history-updated'])window.addEventListener(ev,refresh);window.addEventListener('hashchange',()=>{if(location.hash==='#memory')refresh();});setInterval(()=>{if(document.visibilityState==='visible')refresh();},30000);choices();
 })();
-</script><script type="module" src="forecast-verification-ui.mjs?v=tracked-records"></script>
+</script><script type="module" src="forecast-verification-ui.mjs?v=save-to-verification"></script>
 </body></html>
 
 

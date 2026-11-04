@@ -55,7 +55,7 @@ if(go){
     dataRevision:s.config.dataRevision||null,evidence:list.filter(item=>numbers.includes(item.number))
    });
    message.replaceChildren(element('span','已儲存 '+record.id.slice(0,8)+'。 '),link());
-   all.disabled=true;refresh();
+   all.disabled=true;openSavedRecord(record);
   }catch(error){message.textContent=error.message;}
  }
  document.addEventListener('click',async event=>{
@@ -66,13 +66,13 @@ if(go){
      ref.state.rows.at(-1)?.date!==draft.state.rows.at(-1)?.date)return;
   const rule=ref.rule,t=draft.dateInfo,c=draft.state;
   try{
-   await globalThis.ForecastVerification.save({
+   const record=await globalThis.ForecastVerification.save({
     game:c.config.game,date:t.date,period:t.period,method:rule.family,numbers:rule.outputs,
     need:rule.need||rule.memorySpec?.need||1,calculatedAt:draft.calculatedAt,
     cutoffDate:c.rows.at(-1).date,cutoffPeriod:c.rows.at(-1).period,
     dataRevision:c.config.dataRevision||null,evidence:rule
    });
-   button.textContent='已儲存這組預測';button.disabled=true;refresh();
+   button.textContent='已儲存這組預測';button.disabled=true;openSavedRecord(record);
   }catch(error){message.textContent=error.message;}
  });
  all.onclick=()=>save(draft?.list.map(item=>item.number)||[]);
@@ -97,7 +97,15 @@ for(const [label,input] of [['彩種',gameFilter],['開始日期',from],['結束
  const field=element('label',label);field.append(input);filters.append(field);input.onchange=()=>refresh();
 }
 const results=element('div');
-center.append(element('h1','驗證開獎紀錄'),element('p','此頁使用本機手動保存的快照。'),filters,results);
+const savedNotice=element('p');savedNotice.setAttribute('role','status');
+center.append(element('h1','驗證開獎紀錄'),savedNotice,element('p','此頁使用本機手動保存的快照。'),filters,results);
+function openSavedRecord(record){
+ gameFilter.value=record.game;
+ for(const filter of [from,to,methodFilter,statusFilter,count])filter.value='';
+ savedNotice.textContent='已儲存 '+record.date+' 的預測：'+format(record.numbers);
+ byId('detail-modal')?.close();
+ location.hash='verification';
+}
 const researchRecord=byId('branch-study-panel');
 const remembered=byId('memory-rules');
 if(researchRecord&&remembered){
@@ -149,6 +157,12 @@ function refresh(){
  }catch(error){results.replaceChildren(element('p',error.message));}
 }
 // Move the existing result nodes. Their original renderers and stored records stay in use.
+const rankArchive=document.querySelector('#page-rank .rank-archive-panel');
+if(rankArchive){
+ const shortcut=link();shortcut.textContent='查看已存推薦與開獎核驗';
+ rankArchive.before(shortcut);
+ center.append(rankArchive);
+}
 const chainSnapshots=byId('chain-snapshots');
 if(chainSnapshots){
  const heading=chainSnapshots.previousElementSibling;
