@@ -23,7 +23,7 @@ globalThis.ForecastVerification={target,save:async input=>{
 const go=byId('rank-go');
 if(go){
  const controls=element('section');controls.className='callout';
- const label=element('label','預測目標日期'),date=element('input');date.id='rank-target-date';date.type='date';label.append(date);
+ const label=element('label','預測日期'),date=element('input');date.id='rank-target-date';date.type='date';label.append(date);
  const period=element('p'),message=element('p');
  message.setAttribute('role','status');
  const all=element('button','儲存這組供開獎驗證');
