@@ -86,6 +86,23 @@ if(go){
 }
 
 function link(){const a=element('a','驗證開獎紀錄');a.href='#verification';return a;}
+document.addEventListener('click',async event=>{
+ const button=event.target.closest('[data-save-located]');
+ if(!button)return;
+ const note=element('span');note.setAttribute('role','status');button.after(note);button.disabled=true;
+ try{
+  const {state:s,rules,targetIndex}=globalThis.LottoLocatedState();
+  const rule=rules.find(item=>item.key===button.dataset.saveLocated);
+  if(!rule?.outputs.length||targetIndex<s.rows.length||s.config.offset>=s.config.n)throw Error('只可儲存尚未開獎且已有準碼的預測。');
+  const spec=globalThis.LocatedMemory.convert(rule,s.config);
+  const date=globalThis.ForecastDates.next(s.rows,s.config.game,targetIndex-s.rows.length+1).date;
+  const {dateInfo}=target(s,date);
+  const record=await globalThis.ForecastVerification.save({game:s.config.game,date:dateInfo.date,period:dateInfo.period,
+   method:'定位加減',numbers:rule.outputs,calculatedAt:new Date().toISOString(),
+   cutoffDate:s.rows.at(-1).date,cutoffPeriod:s.rows.at(-1).period,evidence:{spec,rule}});
+  button.textContent='已儲存 ✓';note.append(' 已存到',link());openSavedRecord(record);
+ }catch(error){note.textContent=error.message;button.disabled=false;}
+});
 const center=element('section');center.className='page panel';center.id='page-verification';
 document.querySelector('main')?.append(center);
 const gameFilter=element('select'),methodFilter=element('select'),statusFilter=element('select');
@@ -109,8 +126,8 @@ function openSavedRecord(record){
  gameFilter.value=record.game;
  for(const filter of [from,to,methodFilter,statusFilter,count])filter.value='';
  savedNotice.textContent='已儲存 '+record.date+' 的預測：'+format(record.numbers);
- byId('detail-modal')?.close();
- location.hash='verification';
+
+ refresh();
 }
 const researchRecord=byId('branch-study-panel');
 const remembered=byId('memory-rules');
