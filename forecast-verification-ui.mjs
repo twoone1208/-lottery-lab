@@ -37,8 +37,8 @@ if(go){
  (byId('rank-stop')||go).after(all,message);
  const invalidate=()=>{draft=null;all.disabled=true;};
  const updateDate=()=>{
-  try{const t=target(state(),date.value);if(!date.value)date.value=t.dateInfo.date;period.textContent='目標期別 '+(t.dateInfo.period||'待確認')+' · '+t.dateInfo.quality;}
-  catch(error){period.textContent=error.message;}
+  try{const t=target(state(),date.value);if(!date.value)date.value=t.dateInfo.date;period.textContent='';period.hidden=true;}
+  catch(error){period.hidden=false;period.textContent=error.message;}
  };
  date.addEventListener('change',()=>{invalidate();updateDate();});
  byId('game')?.addEventListener('change',()=>{date.value='';invalidate();updateDate();});
