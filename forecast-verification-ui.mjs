@@ -22,7 +22,7 @@ globalThis.ForecastVerification={target,save:async input=>{
 
 const go=byId('rank-go');
 if(go){
- const controls=element('section');controls.className='callout';
+ const controls=element('section');controls.className='rank-date-field';
  const label=element('label','預測日期'),date=element('input');date.id='rank-target-date';date.type='date';label.append(date);
  const period=element('p'),message=element('p');
  message.setAttribute('role','status');
@@ -34,6 +34,7 @@ if(go){
  fields.style.cssText='display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:start;margin-bottom:12px';
  countField.before(fields);
  fields.append(countField,controls);
+ for(const field of [countField,label]){field.style.cssText='display:block;min-width:0;width:100%;max-width:none;margin:0;color:inherit;font-weight:700';const input=field.querySelector('input');input.style.cssText='display:block;width:100%;min-width:0;max-width:100%;height:46px;margin:8px 0 0;padding:0 8px;text-align:left;font-size:16px';}
  (byId('rank-stop')||go).after(all,message);
  const invalidate=()=>{draft=null;all.disabled=true;};
  const updateDate=()=>{
