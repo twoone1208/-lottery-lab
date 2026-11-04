@@ -24,13 +24,14 @@ const go=byId('rank-go');
 if(go){
  const controls=element('section');controls.className='callout';
  const label=element('label','預測目標日期'),date=element('input');date.id='rank-target-date';date.type='date';label.append(date);
- const period=element('p'),selection=element('div'),message=element('p');
+ const period=element('p'),message=element('p');
  message.setAttribute('role','status');
- const all=element('button','儲存全部推薦'),selected=element('button','儲存勾選號碼');
- for(const b of [all,selected]){b.type='button';b.className='button';b.disabled=true;}
- controls.append(label,period,selection,all,selected,message);
+ const all=element('button','儲存這組供開獎驗證');
+ all.type='button';all.className='button quiet';all.disabled=true;
+ controls.append(label,period);
  go.before(controls);
- const invalidate=()=>{draft=null;selection.replaceChildren();all.disabled=selected.disabled=true;};
+ (byId('rank-stop')||go).after(all,message);
+ const invalidate=()=>{draft=null;all.disabled=true;};
  const updateDate=()=>{
   try{const t=target(state(),date.value);if(!date.value)date.value=t.dateInfo.date;period.textContent='目標期別 '+(t.dateInfo.period||'待確認')+' · '+t.dateInfo.quality;}
   catch(error){period.textContent=error.message;}
@@ -42,23 +43,19 @@ if(go){
  addEventListener('rank-calculation-cancel',()=>{invalidate();message.textContent='本次未完整算完';});
  addEventListener('rank-calculation-complete',event=>{
   draft=structuredClone(event.detail);draft.calculatedAt=new Date().toISOString();
-  for(const item of draft.list){
-   const label=element('label',String(item.number).padStart(2,'0')),checkbox=element('input');
-   checkbox.type='checkbox';checkbox.value=item.number;label.prepend(checkbox);selection.append(label);
-  }
-  all.disabled=selected.disabled=false;message.textContent='計算完成，等待手動儲存。';
+  all.disabled=false;message.textContent='計算完成，可儲存整組號碼。';
  });
- async function save(numbers,selectionType){
+ async function save(numbers){
   if(!draft||!numbers.length){message.textContent='請先計算並選擇號碼';return;}
   const {state:s,dateInfo,list,calculatedAt}=draft;
   try{
    const record=await globalThis.ForecastVerification.save({
-    game:s.config.game,date:dateInfo.date,period:dateInfo.period,method:'綜合推薦',numbers,selectionType,
+    game:s.config.game,date:dateInfo.date,period:dateInfo.period,method:'綜合推薦',numbers,selectionType:'all',
     calculatedAt,cutoffDate:s.rows.at(-1).date,cutoffPeriod:s.rows.at(-1).period,
     dataRevision:s.config.dataRevision||null,evidence:list.filter(item=>numbers.includes(item.number))
    });
    message.replaceChildren(element('span','已儲存 '+record.id.slice(0,8)+'。 '),link());
-   refresh();
+   all.disabled=true;refresh();
   }catch(error){message.textContent=error.message;}
  }
  document.addEventListener('click',async event=>{
@@ -78,8 +75,7 @@ if(go){
    button.textContent='已儲存這組預測';button.disabled=true;refresh();
   }catch(error){message.textContent=error.message;}
  });
- all.onclick=()=>save(draft?.list.map(item=>item.number)||[],'all');
- selected.onclick=()=>save([...selection.querySelectorAll('input:checked')].map(input=>Number(input.value)),'partial');
+ all.onclick=()=>save(draft?.list.map(item=>item.number)||[]);
  updateDate();
 }
 
