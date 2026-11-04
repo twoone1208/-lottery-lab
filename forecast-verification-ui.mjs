@@ -29,7 +29,11 @@ if(go){
  const all=element('button','儲存這組供開獎驗證');
  all.type='button';all.className='button quiet';all.disabled=true;
  controls.append(label,period);
- go.before(controls);
+ const countField=byId('rank-count').closest('label');
+ const fields=element('div');fields.className='rank-settings-row';
+ fields.style.cssText='display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:start;margin-bottom:12px';
+ countField.before(fields);
+ fields.append(countField,controls);
  (byId('rank-stop')||go).after(all,message);
  const invalidate=()=>{draft=null;all.disabled=true;};
  const updateDate=()=>{
