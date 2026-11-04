@@ -148,6 +148,18 @@ function refresh(){
   if(!matched.length)results.append(element('p','沒有符合條件的手動保存紀錄。'));
  }catch(error){results.replaceChildren(element('p',error.message));}
 }
+// Move the existing result nodes. Their original renderers and stored records stay in use.
+const chainSnapshots=byId('chain-snapshots');
+if(chainSnapshots){
+ const heading=chainSnapshots.previousElementSibling;
+ const records=element('section');records.className='panel';records.id='verification-chain-records';
+ records.append(heading,chainSnapshots);
+ center.append(records);
+ const shortcut=link();shortcut.textContent='查看兩階段版路的開獎核驗';
+ byId('chain-rules')?.after(shortcut);
+}
+const memoryLog=byId('memory-log')?.closest('section');
+if(memoryLog&&memoryLog.id!=='page-memory')center.append(memoryLog);
 addEventListener('verification-page-open',refresh);
 if(location.hash==='#verification'){
  center.classList.add('active');
