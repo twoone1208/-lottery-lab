@@ -860,7 +860,7 @@ function choices(){const game=LottoSearchState().config.game,g=Lotto.games[game]
  const originalSummary=globalThis.FormulaVisual.summary;globalThis.FormulaVisual.summary=r=>r.chainSpec?'<div class="chain-summary">'+esc(summary(r.chainSpec))+'</div><div class="fv-meta">歷史 '+r.hits+'／'+r.samples+'組；'+r.outputs.length+'中'+r.need+'整組條件</div>':originalSummary(r);
  $('game').addEventListener('change',choices);for(const ev of ['central-dataset-ready','lotto-history-updated'])window.addEventListener(ev,refresh);window.addEventListener('hashchange',()=>{if(location.hash==='#memory')refresh();});setInterval(()=>{if(document.visibilityState==='visible')refresh();},30000);choices();
 })();
-</script><script type="module" src="forecast-verification-ui.mjs?v=aligned-date-fields"></script>
+</script><script type="module" src="forecast-verification-ui.mjs?v=matched-field-labels"></script>
 </body></html>
 
 
