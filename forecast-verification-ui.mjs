@@ -29,12 +29,13 @@ if(go){
  const all=element('button','儲存這組供開獎驗證');
  all.type='button';all.className='button quiet';all.disabled=true;
  controls.append(label,period);
+ const dateStyle=element('style');dateStyle.textContent='#rank-target-date::-webkit-date-and-time-value{text-align:left;min-height:0;margin:0} #rank-target-date::-webkit-datetime-edit{padding:0}';controls.append(dateStyle);
  const countField=byId('rank-count').closest('label');
  const fields=element('div');fields.className='rank-settings-row';
  fields.style.cssText='display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:start;margin-bottom:12px';
  countField.before(fields);
  fields.append(countField,controls);
- for(const field of [countField,label]){field.style.cssText='display:block;min-width:0;width:100%;max-width:none;margin:0;color:inherit;font:700 14px/20px system-ui,sans-serif';const input=field.querySelector('input');input.style.cssText='display:block;width:100%;min-width:0;max-width:100%;height:46px;appearance:none;-webkit-appearance:none;margin:8px 0 0;padding:0 8px;text-align:left;font-size:16px';}
+ for(const field of [countField,label]){field.style.cssText='display:flex;flex-direction:column;gap:8px;min-width:0;width:100%;max-width:none;margin:0;padding:0;color:inherit;font:700 14px/20px system-ui,sans-serif';const input=field.querySelector('input');input.style.cssText='display:block;width:100%;min-width:0;max-width:100%;height:46px;min-height:46px;box-sizing:border-box;appearance:none;-webkit-appearance:none;margin:0;padding:0 8px;text-align:left;font:700 16px/normal system-ui,sans-serif';}
  (byId('rank-stop')||go).after(all,message);
  const invalidate=()=>{draft=null;all.disabled=true;};
  const updateDate=()=>{
