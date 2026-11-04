@@ -80,11 +80,8 @@ if(go){
 }
 
 function link(){const a=element('a','驗證開獎紀錄');a.href='#verification';return a;}
-const center=element('section');center.className='panel';center.id='verification-center';center.hidden=true;
+const center=element('section');center.className='page panel';center.id='page-verification';
 document.querySelector('main')?.append(center);
-const menu=document.querySelector('.mobile-nav');
-if(menu){const a=link();a.className='nav';menu.append(a);}
-byId('page-home')?.append(link());
 const gameFilter=element('select'),methodFilter=element('select'),statusFilter=element('select');
 const from=element('input'),to=element('input'),count=element('input');
 from.type=to.type='date';count.type='number';count.min='1';
@@ -151,10 +148,8 @@ function refresh(){
   if(!matched.length)results.append(element('p','沒有符合條件的手動保存紀錄。'));
  }catch(error){results.replaceChildren(element('p',error.message));}
 }
-function route(){
- const open=location.hash==='#verification';
- center.hidden=!open;
- if(open){document.querySelectorAll('.page.active').forEach(page=>page.classList.remove('active'));refresh();}
+addEventListener('verification-page-open',refresh);
+if(location.hash==='#verification'){
+ center.classList.add('active');
+ refresh();
 }
-addEventListener('hashchange',route);
-route();
