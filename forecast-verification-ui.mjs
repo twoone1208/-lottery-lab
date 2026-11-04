@@ -100,7 +100,7 @@ document.addEventListener('click',async event=>{
   const record=await globalThis.ForecastVerification.save({game:s.config.game,date:dateInfo.date,period:dateInfo.period,
    method:'定位加減',numbers:rule.outputs,calculatedAt:new Date().toISOString(),
    cutoffDate:s.rows.at(-1).date,cutoffPeriod:s.rows.at(-1).period,evidence:{spec,rule}});
-  button.textContent='已儲存 ✓';note.append(' 已存到',link());openSavedRecord(record);
+  button.textContent='✅';button.setAttribute('aria-label','已儲存供開獎驗證');note.remove();openSavedRecord(record);
  }catch(error){note.textContent=error.message;button.disabled=false;}
 });
 const center=element('section');center.className='page panel';center.id='page-verification';
