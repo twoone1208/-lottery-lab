@@ -106,7 +106,7 @@ html{scroll-padding-top:90px}body{background:#09151c;color:#e9f5f7;font-family:-
 (function(root){'use strict';const names={539:'今彩539',daily:'天天樂',mark6:'六合彩'};function name(game){return names[game]||'未辨識彩種';}function badge(game){const id=Object.hasOwn(names,game)?game:'unknown';return '<span class="lotto-game-tag lotto-game-'+id+'">'+name(game)+'</span>';}root.GameLabels={name,badge};})(globalThis);
 </script><style>body:has(#page-home.active) .shared-bar{display:none}</style>
 <style>.mobile-nav{grid-template-columns:repeat(7,minmax(0,1fr))}</style>
-</head><body class="mobile-app"><script>/* 正式計算只讀中央完整資料版本；本機輸入保留為校對草稿。 */
+<style>#page-analysis #flow,#page-analysis #metrics{display:none!important}</style></head><body class="mobile-app"><script>/* 正式計算只讀中央完整資料版本；本機輸入保留為校對草稿。 */
 (function(root){'use strict';const clone=x=>JSON.parse(JSON.stringify(x)),prefix='lotto-central-dataset-v2-',memo=new Map();
 const signature=rows=>JSON.stringify(rows.map(r=>[r.game,r.date,r.period||'',r.nums||null,r.sortedNums||null,r.drawNums||null,r.special??null,!!r.missing,!!r.verified,r.source||'']));
 function cached(game){if(memo.has(game))return memo.get(game);try{const d=JSON.parse(localStorage.getItem(prefix+game)||'null');if(d?.format==='central-cache/2'&&d.game===game&&d.signature===signature(d.rows)){memo.set(game,d);return d;}}catch{}return null;}
