@@ -101,6 +101,24 @@ for(const [label,input] of [['彩種',gameFilter],['開始日期',from],['結束
 }
 const results=element('div');
 center.append(element('h1','驗證開獎紀錄'),element('p','此頁使用本機手動保存的快照。'),filters,results);
+const researchRecord=byId('branch-study-panel');
+const remembered=byId('memory-rules');
+if(researchRecord&&remembered){
+ const archive=element('details');
+ archive.append(element('summary','既有研究核驗 · 今彩539 · 2026/11/02'),researchRecord);
+ center.append(archive);
+ const rule=element('details');
+ rule.className='panel';
+ rule.id='remembered-borrow39';
+ rule.append(element('summary','借39減法＋加法＋尾數'),
+  element('p','今彩539 · 已入雲端研究庫 · 尚未核准列入綜合推薦'),
+  element('p','階梯從順4走到順1，每個來源對應下3期。取碼不足減6時先加39再減，另算加6和加法結果的個位數。走到順1後停止。'),
+  link());
+ remembered.before(rule);
+ byId('game')?.addEventListener('change',()=>{rule.hidden=state().config.game!=='539';});
+ rule.hidden=state().config.game!=='539';
+}
+
 
 function refresh(){
  try{
