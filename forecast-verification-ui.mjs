@@ -182,10 +182,29 @@ function refresh(){
   for(const r of matched.sort((a,b)=>b.date.localeCompare(a.date)||b.savedAt.localeCompare(a.savedAt))){
    const label=games[r.game]+' · '+r.date+' · '+r.method;
    if(!groups.has(label)){const group=element('section');group.className='panel';group.append(element('h3',label));groups.set(label,group);results.append(group);}
-   const card=element('details'),v=r.verification;
-   card.append(element('summary',format(r.numbers)+' · '+(r.retrospective?'事後研究':v?(v.success?'已命中':'未命中'):'待開獎')),
-    element('p','期別 '+(r.period||'待確認')+' · 命中 '+format(v?.hits)+'（'+(v?.count??'—')+'顆） · 實際開出 '+format(v?.opened)),
-    element('p','保存 '+new Date(r.savedAt).toLocaleString('zh-TW',{timeZone:'Asia/Taipei'})+' · '+r.id));
+   const card=element('article'),v=r.verification;card.className='archive-result';
+   const badge=element('span',games[r.game]);badge.className='game-badge';
+   const date=globalThis.ForecastDates.format(r.date);
+   const balls=element('div');balls.className='archive-balls';
+   for(const number of r.numbers){
+    const ball=element('strong',format([number]));
+    if(v?.hits?.includes(number))ball.className='archive-hit';
+    balls.append(ball);
+   }
+   const outcome=element('p',r.retrospective?'事後研究':v?
+    '命中 '+v.count+' 顆：'+format(v.hits)+(r.need>1?' · '+(v.success?'達到':'未達')+'至少'+r.need+'顆':''):'等待開獎／資料尚未載入');
+   outcome.className='archive-outcome';outcome.setAttribute('role','status');
+   card.append(badge,element('h3',date+' · '+r.count+'顆'),element('p',r.method+'｜目標 '+date),balls,outcome);
+   if(v){
+    const opened=element('p');opened.className='archive-opened';
+    opened.append(element('span',games[r.game]+'｜實際開獎 '+r.date),element('strong',format(v.opened)));
+    card.append(opened);
+   }
+   const version=element('details');
+   version.append(element('summary','版本資料'),
+    element('p','期別 '+(r.period||'待確認')+' · 保存 '+new Date(r.savedAt).toLocaleString('zh-TW',{timeZone:'Asia/Taipei'})),
+    element('p','紀錄 '+r.id));
+   card.append(version);
    const evidence=element('details');evidence.append(element('summary','查看推算公式'));
    const entries=Array.isArray(r.evidence)?r.evidence:[r.evidence];
    let shown=0;
