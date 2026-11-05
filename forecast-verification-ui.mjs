@@ -186,7 +186,25 @@ function refresh(){
    card.append(element('summary',format(r.numbers)+' · '+(r.retrospective?'事後研究':v?(v.success?'已命中':'未命中'):'待開獎')),
     element('p','期別 '+(r.period||'待確認')+' · 命中 '+format(v?.hits)+'（'+(v?.count??'—')+'顆） · 實際開出 '+format(v?.opened)),
     element('p','保存 '+new Date(r.savedAt).toLocaleString('zh-TW',{timeZone:'Asia/Taipei'})+' · '+r.id));
-   const evidence=element('pre',JSON.stringify(r.evidence,null,2));evidence.style.whiteSpace='pre-wrap';evidence.style.overflowWrap='anywhere';card.append(evidence);
+   const evidence=element('details');evidence.append(element('summary','查看推算公式'));
+   const entries=Array.isArray(r.evidence)?r.evidence:[r.evidence];
+   let shown=0;
+   for(const entry of entries.filter(Boolean)){
+    const rules=entry.rules||entry.methodGroups?.map(group=>group.rule)||[entry.rule||entry];
+    const section=element('section');
+    if(entry.number)section.append(element('h4','候選號碼 '+format([entry.number])));
+    for(const rule of rules.filter(Boolean)){
+     if(!rule.label&&rule.value==null)continue;
+     const item=element('p',rule.label||((rule.op==='sum'?'合數':'差數')+' · 準順'+(rule.p+1)+' · 公式值 '+rule.value));
+     section.append(item);
+     if(rule.sourceDate)section.append(element('p','來源日期 '+rule.sourceDate));
+     if(rule.samples)section.append(element('p','歷史符合 '+rule.hits+'／'+rule.samples+' 組'));
+     shown++;
+    }
+    evidence.append(section);
+   }
+   if(!shown)evidence.append(element('p','此舊紀錄未保存可顯示的公式摘要。原始研究資料仍保留。'));
+   card.append(evidence);
    groups.get(label).append(card);
   }
   if(!matched.length)results.append(element('p','沒有符合條件的手動保存紀錄。'));
