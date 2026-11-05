@@ -861,7 +861,54 @@ function choices(){const game=LottoSearchState().config.game,g=Lotto.games[game]
  $('game').addEventListener('change',choices);for(const ev of ['central-dataset-ready','lotto-history-updated'])window.addEventListener(ev,refresh);window.addEventListener('hashchange',()=>{if(location.hash==='#memory')refresh();});setInterval(()=>{if(document.visibilityState==='visible')refresh();},30000);choices();
 })();
 </script><script type="module" src="forecast-verification-ui.mjs?v=verification-filter-layout"></script>
-</body></html>
+<style>
+#page-analysis .recent-draws{padding:16px;min-width:0}
+.recent-draws h2{font-size:19px;margin:0 0 12px}
+.recent-draw-row{padding:12px 0;border-top:1px solid #2b4b58}
+.recent-draw-date{font-size:14px;color:#b6cfd6;margin-bottom:7px}
+.recent-draw-period{font-size:12px;color:#8daab6}
+.recent-draw-balls{display:flex;gap:5px;margin-top:7px}
+.recent-draw-balls b{flex:1;min-width:0;text-align:center;padding:5px 0;background:#19404a;color:#79e6e8;border-radius:8px;font-size:18px}
+@media(min-width:1101px){#page-analysis .workspace{grid-template-columns:290px 265px minmax(0,1fr);gap:16px}}
+@media(min-width:761px) and (max-width:1100px){#page-analysis .workspace{grid-template-columns:275px minmax(0,1fr)}#page-analysis .recent-draws{grid-column:2;grid-row:1}#page-analysis .results{grid-column:2}#page-analysis .controls{grid-row:1 / span 2}}
+@media(max-width:760px){#page-analysis .recent-draws{margin-bottom:18px}}
+</style>
+<script>
+(()=>{'use strict';
+ const workspace=document.querySelector('#page-analysis .workspace');
+ if(!workspace)return;
+ const panel=document.createElement('section');panel.className='panel recent-draws';
+ panel.setAttribute('aria-label','最近7期開獎');
+ workspace.querySelector('.controls').after(panel);
+ let signature='';
+ function renderRecent(){
+  const state=globalThis.LottoSearchState?.();if(!state)return;
+  const prepared=AutoLottoSearch.prepare(Lotto,state.rows,state.config.game,state.config.order);
+  const recent=prepared.slice(-7).reverse();
+  const next=JSON.stringify([state.config.game,state.config.order,recent]);
+  if(signature===next)return;signature=next;
+  panel.replaceChildren();
+  const title=document.createElement('h2');title.textContent='最近7期開獎';panel.append(title);
+  const note=document.createElement('p');note.className='recent-draw-period';
+  note.textContent=GameLabels.name(state.config.game)+' · '+(state.config.order==='draw'?'落球順序':'順球（小到大）');panel.append(note);
+  for(const draw of recent){
+   const row=document.createElement('div');row.className='recent-draw-row';
+   const date=document.createElement('div');date.className='recent-draw-date';date.textContent=ForecastDates.format(draw.date);
+   const period=document.createElement('div');period.className='recent-draw-period';period.textContent=draw.period?'第 '+draw.period+' 期':'期別未提供';
+   const balls=document.createElement('div');balls.className='recent-draw-balls';
+   if(draw.nums)for(const number of draw.nums){const ball=document.createElement('b');ball.textContent=String(number).padStart(2,'0');balls.append(ball);}
+   else balls.textContent='缺少落球資料';
+   row.append(date,period,balls);panel.append(row);
+  }
+ }
+ document.getElementById('game').addEventListener('change',()=>setTimeout(renderRecent,0));
+ document.getElementById('shared-order').addEventListener('change',()=>setTimeout(renderRecent,0));
+ addEventListener('lotto-history-updated',renderRecent);addEventListener('central-dataset-ready',renderRecent);
+ const marker=document.getElementById('global-record');
+ if(marker)new MutationObserver(renderRecent).observe(marker,{childList:true,characterData:true,subtree:true});
+ renderRecent();
+})();
+</script></body></html>
 
 
 
