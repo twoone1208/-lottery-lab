@@ -871,7 +871,7 @@ function choices(){const game=LottoSearchState().config.game,g=Lotto.games[game]
 .recent-draw-balls b{flex:1;min-width:0;text-align:center;padding:5px 0;background:#19404a;color:#79e6e8;border-radius:8px;font-size:18px}
 @media(min-width:1101px){#page-analysis .workspace{grid-template-columns:290px 265px minmax(0,1fr);gap:16px}}
 @media(min-width:761px) and (max-width:1100px){#page-analysis .workspace{grid-template-columns:275px minmax(0,1fr)}#page-analysis .recent-draws{grid-column:2;grid-row:1}#page-analysis .results{grid-column:2}#page-analysis .controls{grid-row:1 / span 2}}
-@media(max-width:760px){#page-analysis .recent-draws{margin-bottom:18px}}
+@media(max-width:760px){#page-analysis .workspace>.recent-draws{display:none}body:has(#page-analysis.active) .recent-draw-launch{display:block}}.recent-draw-launch{display:none;position:fixed;right:16px;bottom:calc(102px + env(safe-area-inset-bottom));z-index:45;border:1px solid #52d6db;border-radius:24px;padding:11px 16px;background:#173c47;color:#8ff3f0;font-size:16px;font-weight:700;box-shadow:0 4px 18px #0006}.recent-draw-dialog{width:min(440px,calc(100vw - 24px));max-height:76dvh;box-sizing:border-box;border:1px solid #36535e;border-radius:18px;padding:14px;background:#102630;color:#e9f5f7;overflow:auto}.recent-draw-dialog::backdrop{background:#0009}.recent-draw-close{position:sticky;top:0;display:block;margin-left:auto;z-index:1;background:#1b404b;color:#d9f5f5;border:1px solid #36535e;border-radius:10px;padding:10px 16px;font:inherit}.recent-draw-dialog .recent-draws{border:0;margin:0;padding:0;box-shadow:none}
 </style>
 <script>
 (()=>{'use strict';
@@ -880,6 +880,14 @@ function choices(){const game=LottoSearchState().config.game,g=Lotto.games[game]
  const panel=document.createElement('section');panel.className='panel recent-draws';
  panel.setAttribute('aria-label','最近7期開獎');
  workspace.querySelector('.controls').after(panel);
+ const launch=document.createElement('button');launch.type='button';launch.className='recent-draw-launch';launch.textContent='最近7期 ▤';launch.setAttribute('aria-haspopup','dialog');
+ const dialog=document.createElement('dialog');dialog.className='recent-draw-dialog';dialog.setAttribute('aria-label','最近7期開獎');
+ const close=document.createElement('button');close.type='button';close.className='recent-draw-close';close.textContent='關閉 ✕';
+ dialog.append(close);document.body.append(launch,dialog);
+ launch.onclick=()=>{dialog.append(panel);dialog.showModal();};
+ close.onclick=()=>dialog.close();
+ dialog.addEventListener('close',()=>workspace.querySelector('.controls').after(panel));
+ dialog.addEventListener('click',event=>{if(event.target===dialog){const box=dialog.getBoundingClientRect();if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom)dialog.close();}});
  let signature='';
  function renderRecent(){
   const state=globalThis.LottoSearchState?.();if(!state)return;
