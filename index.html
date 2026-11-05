@@ -790,7 +790,7 @@ const panel=document.createElement('section');panel.className='panel central-dat
 const provenance=document.createElement('p');provenance.textContent='539官方核對範圍以中央證據為準；未核對期數與其他彩種保留公開來源標籤，並非全部已官方驗證。';panel.append(provenance);
 const banner=document.createElement('div');banner.id='central-dataset-banner';banner.className='callout';banner.setAttribute('role','status');document.querySelector('main')?.prepend(banner);
 let busy=false,lastGame='',lastAt=0;
-function show(text){const state=LottoHistorySync.state(),cache=CentralDataset.cached(state.config.game);$('central-update-status').textContent=(cache?'開獎資料已更新至 '+cache.latest+'。':'')+text+(cache?.officialThrough?' 官方核對截至 '+cache.officialThrough+'；其後期數依各筆來源標示。':'');banner.textContent=cache?'中央資料截至 '+cache.latest+'｜版本 '+cache.revision.slice(0,22)+'…｜'+text:text;}
+function show(text){const state=LottoHistorySync.state(),cache=CentralDataset.cached(state.config.game);$('central-update-status').textContent=(cache?'開獎資料已更新至 '+cache.latest+'。':'')+text+(cache?.officialThrough?' 官方核對截至 '+cache.officialThrough+'；其後期數依各筆來源標示。':'');banner.textContent=cache?'中央資料截至 '+cache.latest+'｜'+(text.startsWith('已是相同')||text.startsWith('已同步')?'已核對最新狀態。':text):text;}
 async function update(force=false){if(busy)return;const bridge=globalThis.LottoHistorySync;if(!bridge)return;const before=bridge.state(),game=before.config.game;if(!force&&game===lastGame&&Date.now()-lastAt<30000)return;busy=true;$('central-update-now').disabled=true;lastAt=Date.now();lastGame=game;
 try{show('同步中…');const r=await fetch(ENDPOINT+'?version=2&game='+encodeURIComponent(game),{headers:{apikey:KEY,Authorization:'Bearer '+KEY},credentials:'omit',mode:'cors',signal:AbortSignal.timeout(20000)});if(!r.ok)throw Error('中央連線HTTP '+r.status);const payload=await r.json();if(bridge.state().config.game!==game)throw Error('彩種已切換，請同步目前彩種。');const result=bridge.install(payload);show(result.changed?'已同步中央完整歷史，並重新核驗已存推薦。':'已是相同中央資料版本，已核對最新狀態。');window.dispatchEvent(new CustomEvent('central-dataset-ready'));}
 catch(e){show('同步未完成：'+e.message+'；保留最後中央版本、原推薦及本機備份。');}finally{busy=false;$('central-update-now').disabled=false;}}
@@ -860,7 +860,7 @@ function choices(){const game=LottoSearchState().config.game,g=Lotto.games[game]
  const originalSummary=globalThis.FormulaVisual.summary;globalThis.FormulaVisual.summary=r=>r.chainSpec?'<div class="chain-summary">'+esc(summary(r.chainSpec))+'</div><div class="fv-meta">歷史 '+r.hits+'／'+r.samples+'組；'+r.outputs.length+'中'+r.need+'整組條件</div>':originalSummary(r);
  $('game').addEventListener('change',choices);for(const ev of ['central-dataset-ready','lotto-history-updated'])window.addEventListener(ev,refresh);window.addEventListener('hashchange',()=>{if(location.hash==='#memory')refresh();});setInterval(()=>{if(document.visibilityState==='visible')refresh();},30000);choices();
 })();
-</script><script type="module" src="forecast-verification-ui.mjs?v=verification-ball-cards"></script>
+</script><script type="module" src="forecast-verification-ui.mjs?v=verification-filter-layout"></script>
 </body></html>
 
 

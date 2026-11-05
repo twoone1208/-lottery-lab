@@ -129,7 +129,8 @@ function options(select,entries){
 options(gameFilter,[['','全部彩種'],...Object.entries(games)]);
 options(statusFilter,[['','全部狀態'],['pending','待開獎'],['hit','已命中'],['miss','未命中'],['research','事後研究']]);
 const filters=element('div');filters.className='field-grid';
-for(const [label,input] of [['彩種',gameFilter],['開始日期',from],['結束日期',to],['計算方式',methodFilter],['狀態',statusFilter],['推薦顆數',count]]){
+filters.style.cssText='display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px';
+for(const [label,input] of [['彩種',gameFilter],['狀態',statusFilter],['開始日期',from],['計算方式',methodFilter],['結束日期',to]]){
  const field=element('label',label);field.append(input);filters.append(field);input.onchange=()=>refresh();
 }
 const results=element('div');
