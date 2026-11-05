@@ -42,7 +42,19 @@ if(go){
   try{const t=target(state(),date.value);if(!date.value)date.value=t.dateInfo.date;period.textContent='';period.hidden=true;}
   catch(error){period.hidden=false;period.textContent=error.message;}
  };
- date.addEventListener('change',()=>{invalidate();updateDate();});
+ date.addEventListener('change',()=>{
+  invalidate();updateDate();
+  byId('rank-list').replaceChildren();
+  byId('rank-status').textContent='日期已變更，請重新計算。';
+  byId('rank-forecast-date').textContent=date.value&&!period.textContent?'本次預測：'+globalThis.ForecastDates.format(date.value):'請選擇有效的預測日期。';
+  message.replaceChildren();
+ });
+ addEventListener('rank-forecast-restored',event=>{
+  invalidate();
+  date.value=event.detail?.date||'';
+  updateDate();
+  message.replaceChildren();
+ });
  byId('game')?.addEventListener('change',()=>{date.value='';invalidate();updateDate();});
  addEventListener('lotto-history-updated',()=>{if(!draft){date.value='';updateDate();}refresh();});
  addEventListener('rank-calculation-start',()=>{invalidate();message.textContent='計算中';});
@@ -82,6 +94,7 @@ if(go){
   }catch(error){message.textContent=error.message;}
  });
  all.onclick=()=>save(draft?.list.map(item=>item.number)||[]);
+ date.value=byId('rank-forecast-date').dataset.restoredDate||'';
  updateDate();
 }
 
