@@ -926,7 +926,7 @@ function choices(){const game=LottoSearchState().config.game,g=Lotto.games[game]
  const nav=document.querySelector('.mobile-nav');
  const memory=document.querySelector('#page-memory');
  const make=(tag,text,cls)=>{const el=document.createElement(tag);el.textContent=text;el.className=cls;return el;};
- const page=(id,title)=>{const el=make('section','','page');el.id='page-'+id;const back=make('button','← 功能首頁','text-button');back.type='button';back.onclick=()=>showPage('home');el.append(back,make('h1',title,''));document.querySelector('main').append(el);return el;};
+ const page=(id,title)=>{const el=make('section','','page');el.id='page-'+id;const back=make('button','← 功能首頁','text-button');back.type='button';back.onclick=()=>(location.hash='home');el.append(back,make('h1',title,''));document.querySelector('main').append(el);return el;};
  const alerts=page('alerts','版路觸發提醒');
  alerts.append(document.querySelector('#memory-pending').closest('section'));
  const chain=page('chain','A→B兩階段定位');
@@ -950,7 +950,7 @@ function choices(){const game=LottoSearchState().config.game,g=Lotto.games[game]
   ['alerts','版路觸發提醒','查看已觸發的版路與待開號碼',services],
   ['verification','驗證開獎紀錄','查看手動儲存的預測與實際命中',services]
  ]){
-  const card=make('button','','hub-card');card.type='button';card.onclick=()=>showPage(id);
+  const card=make('button','','hub-card');card.type='button';card.onclick=()=>(location.hash=id);
   const copy=make('span','','');copy.append(make('strong',title,''),make('small',description,''));
   card.append(make('span','↗','hub-num'),copy);parent.append(card);
  }
@@ -968,7 +968,7 @@ function choices(){const game=LottoSearchState().config.game,g=Lotto.games[game]
   nav.replaceChildren(...items.map(id=>{
    const [,title,icon]=options.find(o=>o[0]===id);
    const button=make('button',icon,'nav'+(id===active?' active':''));button.type='button';button.dataset.page=id;
-   button.append(make('span',title,''));button.onclick=()=>showPage(id);return button;
+   button.append(make('span',title,''));button.onclick=()=>(location.hash=id);return button;
   }));
  }
  for(const [id,title] of options.slice(1)){
@@ -982,7 +982,7 @@ function choices(){const game=LottoSearchState().config.game,g=Lotto.games[game]
   };
  }
  paint();
- if(['#chain','#alerts'].includes(location.hash))showPage(location.hash.slice(1));
+ if(['#chain','#alerts'].includes(location.hash))window.dispatchEvent(new Event('hashchange'));
 })();
 </script></body></html>
 
