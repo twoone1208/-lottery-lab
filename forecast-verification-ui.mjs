@@ -102,19 +102,25 @@ function link(){const a=element('a','驗證開獎紀錄');a.href='#verification'
 document.addEventListener('click',async event=>{
  const button=event.target.closest('[data-save-located]');
  if(!button)return;
- const note=element('span');note.setAttribute('role','status');button.after(note);button.disabled=true;
+ button.parentElement.querySelector('[data-located-save-error]')?.remove();button.disabled=true;
  try{
-  const {state:s,rules,targetIndex}=globalThis.LottoLocatedState();
+  const {state:s,rules,targetIndex,statisticsDate}=globalThis.LottoLocatedState();
   const rule=rules.find(item=>item.key===button.dataset.saveLocated);
-  if(!rule?.outputs.length||targetIndex<s.rows.length||s.config.offset>=s.config.n)throw Error('只可儲存尚未開獎且已有準碼的預測。');
+  if(!rule?.outputs.length||!Number.isInteger(targetIndex))throw Error('請先完成定位分析並取得候選號碼。');
+  if(s.config.offset>=s.config.n)throw Error('準期必須早於目標期才能儲存。');
   const spec=globalThis.LocatedMemory.convert(rule,s.config);
-  const date=globalThis.ForecastDates.next(s.rows,s.config.game,targetIndex-s.rows.length+1).date;
+  const source=s.rows[targetIndex-s.config.n+s.config.offset];
+  const statistics=s.rows.find(row=>row.date===statisticsDate);
+  if(!source||!statistics)throw Error('缺少準期或統計資料，請重新計算。');
+  const cutoff=source.date>statistics.date?source:statistics;
+  const date=s.rows[targetIndex]?.date||globalThis.ForecastDates.next(s.rows,s.config.game,targetIndex-s.rows.length+1).date;
+  if(!date)throw Error('無法判定目標開獎日期。');
   const {dateInfo}=target(s,date);
   const record=await globalThis.ForecastVerification.save({game:s.config.game,date:dateInfo.date,period:dateInfo.period,
    method:'定位加減',numbers:rule.outputs,calculatedAt:new Date().toISOString(),
-   cutoffDate:s.rows.at(-1).date,cutoffPeriod:s.rows.at(-1).period,evidence:{spec,rule}});
-  button.textContent='✅';button.setAttribute('aria-label','已儲存供開獎驗證');note.remove();openSavedRecord(record);
- }catch(error){note.textContent=error.message;button.disabled=false;}
+   cutoffDate:cutoff.date,cutoffPeriod:cutoff.period,evidence:{spec,rule}});
+  button.textContent='✅';button.setAttribute('aria-label','已儲存供開獎驗證');openSavedRecord(record);
+ }catch(error){const note=element("span",error.message);note.dataset.locatedSaveError="";note.setAttribute("role","status");note.style.flexBasis="100%";button.after(note);button.disabled=false;}
 });
 const center=element('section');center.className='page panel';center.id='page-verification';
 document.querySelector('main')?.append(center);
