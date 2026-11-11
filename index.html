@@ -659,8 +659,8 @@ $('archive-records').onclick=e=>{const b=e.target.closest('[data-archive-show]')
 $('archive-check').onclick=()=>{if(refresh())msg('核對完成。請查看各版本的命中結果；尚未載入目標日期開獎的版本，請先到「資料」更新。');};
 $('archive-export').onclick=()=>{try{const url=URL.createObjectURL(new Blob([JSON.stringify(read(),null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='推薦號碼與核驗備份.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}catch(e){msg(e.message);}};
 $('archive-import').onchange=async e=>{try{const f=e.target.files[0];if(!f||f.size>5000000)throw Error('備份需小於5MB');const raw=JSON.parse(await f.text());if(raw.format!=='rank-archive/1'||!Array.isArray(raw.versions)||raw.versions.length>100)throw Error('推薦備份格式不正確');const d=read(),all=[...raw.versions,...Object.values(raw.cache||{})];for(const s of all){RankArchive.validate(s);if(!d.versions.some(x=>x.id===s.id))d.versions.push(s);}write(d);refresh();msg('已合併匯入版本，依目前本機開獎重新核對。');}catch(e){msg(e.message);}};
-let timer;window.addEventListener('lotto-history-updated',()=>{clearTimeout(timer);timer=setTimeout(refresh,100);});window.addEventListener('central-dataset-ready',()=>setTimeout(restoreCurrent,0));
-document.addEventListener('click',e=>{if(e.target.closest('[data-page]'))setTimeout(restoreCurrent,0);});window.addEventListener('hashchange',()=>setTimeout(restoreCurrent,0));document.addEventListener('change',e=>{if(e.target.id==='game')setTimeout(restoreCurrent,0);});
+let timer;window.addEventListener('lotto-history-updated',()=>{clearTimeout(timer);timer=setTimeout(refresh,100);});window.addEventListener('central-dataset-ready',()=>setTimeout(refresh,0));
+document.addEventListener('change',e=>{if(e.target.id==='game')setTimeout(restoreCurrent,0);});
 setTimeout(restoreCurrent,0);setInterval(()=>{if(document.visibilityState==='visible')refresh();},5000);
 })();
 </script><script>/* 定位結果轉成既有版路記憶格式，不另建追蹤引擎。 */
