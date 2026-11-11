@@ -134,7 +134,7 @@ function options(select,entries){
 }
 options(gameFilter,[['','全部彩種'],...Object.entries(games)]);
 options(statusFilter,[['','全部狀態'],['pending','待開獎'],['hit','已命中'],['miss','未命中'],['research','事後研究']]);
-const filters=element('div');filters.className='field-grid';
+const filters=element('div');filters.className='field-grid verification-filters';
 filters.style.cssText='display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px';
 for(const [label,input] of [['彩種',gameFilter],['狀態',statusFilter],['開始日期',from],['計算方式',methodFilter],['結束日期',to]]){
  const field=element('label',label);field.append(input);filters.append(field);input.onchange=()=>refresh();
@@ -204,7 +204,13 @@ function refresh(){
    card.append(badge,element('h3',date+' · '+r.count+'顆'),element('p',r.method+'｜目標 '+date),balls,outcome);
    if(v){
     const opened=element('p');opened.className='archive-opened';
-    opened.append(element('span',games[r.game]+'｜實際開獎 '+r.date),element('strong',format(v.opened)));
+    const balls=element('span');balls.className='draw-result-balls';
+    for(const number of v.opened){
+     const hit=v.hits.includes(number),ball=element('b',format([number]));
+     if(hit){ball.className='draw-result-hit';ball.setAttribute('aria-label',format([number])+'，命中');}
+     balls.append(ball);
+    }
+    opened.append(element('span',games[r.game]+'｜實際開獎 '+r.date),balls);
     card.append(opened);
    }
    const version=element('details');
