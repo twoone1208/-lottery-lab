@@ -212,7 +212,7 @@ function options(el,items){el.innerHTML=items.map(([v,t])=>`<option value="${esc
 options($('#number'),Array.from({length:39},(_,i)=>[i+1,two(i+1)]));options($('#second'),[['','不選擇'],...Array.from({length:39},(_,i)=>[i+1,two(i+1)])]);options($('#offset'),Array.from({length:61},(_,i)=>{const v=i-30;return[v,v===0?'定位當期（0）':v<0?`往上${-v}期／較早（${v}）`:`往下${v}期／較晚（+${v}）`];}));
 function setForm(){for(const [k,v]of Object.entries(config)){const el=$(`#settings [name="${k}"]`);if(el)el.value=v==null?'':String(v);}}
 function getForm(){if($('#match-mode').value==='dual'&&!$('#second').value)throw Error('雙號同開模式請選擇第二個號碼。');const obj=Object.fromEntries(new FormData($('#settings')));for(const k of ['n','limit','threshold','anchor'])if(String(obj[k]??'').trim()==='')throw Error('請完整填寫期數、樣本數、門檻與定位序號。');obj.game=config.game||'539';obj.absolute=obj.absolute==='true';return Lotto.settings(obj);}
-function showPage(p){if(!['home','rank','analysis','auto','drag','stair','memory','data','guide','verification'].includes(p))p='home';$$('.page').forEach(el=>el.classList.toggle('active',el.id==='page-'+p));$$('.nav').forEach(el=>el.classList.toggle('active',el.dataset.page===p));history.replaceState(null,'','#'+p);if(p==='verification')window.dispatchEvent(new Event('verification-page-open'));if(p==='data')renderHistory();if(p==='memory'&&globalThis.refreshMemoryTracker)globalThis.refreshMemoryTracker();window.scrollTo({top:0,behavior:'smooth'});}
+function showPage(p){if(!['home','rank','analysis','auto','drag','stair','chain','alerts','memory','data','guide','verification'].includes(p))p='home';$$('.page').forEach(el=>el.classList.toggle('active',el.id==='page-'+p));$$('.nav').forEach(el=>el.classList.toggle('active',el.dataset.page===p));history.replaceState(null,'','#'+p);if(p==='verification')window.dispatchEvent(new Event('verification-page-open'));if(p==='data')renderHistory();if(['memory','alerts'].includes(p)&&globalThis.refreshMemoryTracker)globalThis.refreshMemoryTracker();window.scrollTo({top:0,behavior:'smooth'});}
 $$('[data-page]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));$$('[data-goto]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.goto)));
 function balls(nums,kind=''){return `<div class="draw-group ${kind}">${nums.map(n=>`<span class="number">${two(n)}</span>`).join('')}</div>`;}
 const statuses={'pending':'待開獎 · 已套用公式','backtest':'歷史回測 · 目標已開','no-match':'沒有符合的定位期','no-base':'準期資料不足或尚未開出','retrospective':'事後分析 · 準期已達或超過目標期','no-order':'所選球序尚缺或本期資料待核對','no-data':'此彩種尚未匯入歷史資料'};
@@ -915,6 +915,74 @@ function choices(){const game=LottoSearchState().config.game,g=Lotto.games[game]
  const marker=document.getElementById('global-record');
  if(marker)new MutationObserver(renderRecent).observe(marker,{childList:true,characterData:true,subtree:true});
  renderRecent();
+})();
+</script><style>
+#home-services{margin-top:24px}.shortcut-options{display:flex;flex-wrap:wrap;gap:12px;padding:12px 0}.shortcut-options label{display:flex;align-items:center;gap:6px;margin:0}.shortcut-options input{width:20px;height:20px;margin:0}.mobile-nav{grid-template-columns:repeat(var(--shortcut-count,7),minmax(0,1fr))}
+</style>
+<script>
+(()=>{
+ const home=document.querySelector('#page-home');
+ const grid=home.querySelector('.hub-grid');
+ const nav=document.querySelector('.mobile-nav');
+ const memory=document.querySelector('#page-memory');
+ const make=(tag,text,cls)=>{const el=document.createElement(tag);el.textContent=text;el.className=cls;return el;};
+ const page=(id,title)=>{const el=make('section','','page');el.id='page-'+id;const back=make('button','← 功能首頁','text-button');back.type='button';back.onclick=()=>showPage('home');el.append(back,make('h1',title,''));document.querySelector('main').append(el);return el;};
+ const alerts=page('alerts','版路觸發提醒');
+ alerts.append(document.querySelector('#memory-pending').closest('section'));
+ const chain=page('chain','A→B兩階段定位');
+ const chainPanel=document.querySelector('#chain-panel');
+ const chainLibrary=make('section','','panel');
+ const chainRules=document.querySelector('#chain-rules');
+ chainLibrary.append(chainRules.previousElementSibling,chainRules);
+ memory.append(chainLibrary);
+ chain.append(chainPanel);
+ const manual=document.querySelector('#memory-form').closest('section');
+ const disclosure=make('details','','panel');
+ disclosure.append(make('summary','手動建立拖牌版路',''),manual);
+ document.querySelector('#page-drag').append(disclosure);
+ grid.before(make('h2','號碼計算與公式',''));
+ const services=make('div','','hub-grid');services.id='home-services';
+ grid.after(make('h2','追蹤、驗證與資料',''),services);
+ for(const id of ['memory','data','guide'])services.append(grid.querySelector('[data-goto="'+id+'"]'));
+ const options=[['home','首頁','⌂'],['rank','推薦','◇'],['analysis','定位','∑'],['auto','找公式','⌕'],['drag','拖牌','↝'],['stair','階梯','▥'],['chain','兩階段','↪'],['alerts','提醒','◉'],['memory','版路','★'],['data','資料','▤'],['verification','驗證','◎'],['guide','說明','?']];
+ for(const [id,title,description,parent] of [
+  ['chain','A→B兩階段定位','設定兩段期距與候選組',grid],
+  ['alerts','版路觸發提醒','查看已觸發的版路與待開號碼',services],
+  ['verification','驗證開獎紀錄','查看手動儲存的預測與實際命中',services]
+ ]){
+  const card=make('button','','hub-card');card.type='button';card.onclick=()=>showPage(id);
+  const copy=make('span','','');copy.append(make('strong',title,''),make('small',description,''));
+  card.append(make('span','↗','hub-num'),copy);parent.append(card);
+ }
+ const key='lotto-nav-shortcuts-v1';
+ const defaults=['rank','analysis','auto','memory','data','verification'];
+ let selected=defaults;
+ try{const saved=JSON.parse(localStorage.getItem(key));if(Array.isArray(saved))selected=[...new Set(saved)].filter(id=>id!=='home'&&options.some(o=>o[0]===id)).slice(0,6);}catch{}
+ const editor=make('details','','panel');editor.append(make('summary','設定底部快捷鍵',''));
+ const fields=make('div','','shortcut-options'),status=make('p','','');status.setAttribute('role','status');
+ editor.append(fields,status);services.after(editor);
+ function paint(){
+  const active=location.hash.slice(1);
+  const items=['home',...selected];
+  nav.style.setProperty('--shortcut-count',items.length);
+  nav.replaceChildren(...items.map(id=>{
+   const [,title,icon]=options.find(o=>o[0]===id);
+   const button=make('button',icon,'nav'+(id===active?' active':''));button.type='button';button.dataset.page=id;
+   button.append(make('span',title,''));button.onclick=()=>showPage(id);return button;
+  }));
+ }
+ for(const [id,title] of options.slice(1)){
+  const label=make('label','',''),input=make('input','','');input.type='checkbox';input.checked=selected.includes(id);
+  label.append(input,title);fields.append(label);
+  input.onchange=()=>{
+   const next=input.checked?[...selected,id]:selected.filter(value=>value!==id);
+   if(next.length>6){input.checked=false;status.textContent='最多可選六個快捷鍵。';return;}
+   try{localStorage.setItem(key,JSON.stringify(next));selected=next;paint();status.textContent='快捷鍵已儲存。';}
+   catch{input.checked=selected.includes(id);status.textContent='無法儲存快捷設定。';}
+  };
+ }
+ paint();
+ if(['#chain','#alerts'].includes(location.hash))showPage(location.hash.slice(1));
 })();
 </script></body></html>
 
