@@ -56,7 +56,7 @@ if(go){
   message.replaceChildren();
  });
  byId('game')?.addEventListener('change',()=>{date.value='';invalidate();updateDate();});
- addEventListener('lotto-history-updated',()=>{if(!draft){date.value='';updateDate();}refresh();});
+ addEventListener('lotto-history-updated',()=>{updateDate();refresh();});
  addEventListener('rank-calculation-start',()=>{invalidate();message.textContent='計算中';});
  addEventListener('rank-calculation-cancel',()=>{invalidate();message.textContent='本次未完整算完';});
  addEventListener('rank-calculation-complete',event=>{
