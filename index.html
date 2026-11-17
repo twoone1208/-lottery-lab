@@ -457,7 +457,7 @@ for(const r of LottoRank.scan(rows,g,LottoFormulaRegistry.list(),30,targetIndex)
 
 // 公式在獨立對話框閱讀，避免手機卡片被長明細撐高。
 globalThis.LottoRankView={restore(snap){if(busy)return false;currentRank=snap.list;lastRankRememberState=snap.state;rankForecastInfo=snap.dateInfo;$('rank-forecast-date').dataset.restoredDate=snap.dateInfo?.date||'';window.dispatchEvent(new CustomEvent("rank-forecast-restored",{detail:snap.dateInfo}));const list=currentRank;$('rank-list').innerHTML=list.map((x,i)=>`<article class="rank-number-card"><p class="rank-card-date">${esc(rankForecastInfo.label)}</p><div class="rank-card-top"><span>第${i+1}名</span><span>${x.families}類支持</span></div><div class="rank-big-ball" aria-label="候選號碼${x.number}">${String(x.number).padStart(2,'0')}</div>${HistoricalRate.card(x)}<button type="button" class="rank-formula-button" data-rank-formula="${i}" aria-haspopup="dialog">查看推算公式 ↗</button></article>`).join('')||'目前沒有至少3次成立的支持規則，不補足指定數量。';;$('rank-forecast-date').textContent='本次預測：'+(rankForecastInfo?.label||'下一期');$('rank-status').textContent='已還原保存的號碼與公式，無需重算。';return true;}};
-function formulaBody(x){return `${HistoricalRate.detail(x)}<p class="rank-dialog-note">${x.families}類方法支持。預測：${esc(rankForecastInfo?.label||'日期待確認')}；資料截止：${esc(rankForecastInfo?.baseLabel||'—')}。下列為支持公式與歷史核驗；分數不是未來開獎機率。</p>${x.rules.map((r,ri)=>({r,ri})).sort((a,b)=>b.r.hits/b.r.samples-a.r.hits/a.r.samples||b.r.samples-a.r.samples).map(({r,ri})=>`<details><summary class="fv-summary">${globalThis.FormulaVisual.summary(r)}</summary><button type="button" class="button quiet" data-save-rank-rule="${ri}">儲存這組預測</button>${r.memorySpec?`<button type="button" class="button quiet" data-remember-rank-rule="${ri}">記住這條版路</button>`:''}<p>歷史命中 ${r.hits}／${r.samples} 組（${(100*r.hits/r.samples).toFixed(1)}%），${r.inSample?'階梯3期為尋找公式所用樣本，尚非獨立驗證。':'同一份歷史用於搜尋與統計，尚非獨立驗證。'}${r.outputs.length>1?'此命中率屬整組至少中'+(r.need||r.memorySpec?.need||1)+'碼，不是本碼的個別命中率。':''}</p><p class="rr-color-legend"><span class="source">橘色：定位／取碼</span>　<span class="target">紅色：候選實際開出</span></p><div class="table-scroll"><table class="rr-evidence-table"><thead><tr><th>來源日期／號碼</th><th>目標日期／開獎號碼</th><th>命中</th></tr></thead><tbody>${r.examples.map(e=>`<tr><td>${EvidenceColors.source(e.source,e.base,r,lastRankRememberState)}</td><td>${EvidenceColors.target(e.target,e.opened,r)}</td><td class="rr-hit-cell">${ReadableResults.hit(e.hit)}</td></tr>`).join('')}</tbody></table></div><p>明細顯示最近最多8筆${r.value!=null?'成立樣本':''}；統計使用全部有效樣本。</p></details>`).join('')}`;}
+function formulaBody(x){return `${HistoricalRate.detail(x)}<p class="rank-dialog-note">${x.families}類方法支持。預測：${esc(rankForecastInfo?.label||'日期待確認')}；資料截止：${esc(rankForecastInfo?.baseLabel||'—')}。下列為支持公式與歷史核驗；分數不是未來開獎機率。</p>${x.rules.map((r,ri)=>({r,ri})).sort((a,b)=>b.r.hits/b.r.samples-a.r.hits/a.r.samples||b.r.samples-a.r.samples).map(({r,ri})=>`<details><summary class="fv-summary">${globalThis.FormulaVisual.summary(r)}</summary><button type="button" class="button quiet" data-save-rank-rule="${ri}">儲存這組預測</button>${r.memorySpec?`<button type="button" class="button quiet" data-remember-rank-rule="${ri}">記住這條版路</button>`:''}<p>歷史命中 ${r.hits}／${r.samples} 組（${(100*r.hits/r.samples).toFixed(1)}%），${r.inSample?'階梯3期為尋找公式所用樣本，尚非獨立驗證。':'同一份歷史用於搜尋與統計，尚非獨立驗證。'}${r.outputs.length>1?'此命中率屬整組至少中'+(r.need||r.memorySpec?.need||1)+'碼，不是本碼的個別命中率。':''}</p><p class="rr-color-legend"><span class="source">橘色：定位／取碼</span>　<span class="target">紅色：候選實際開出</span></p><div class="table-scroll"><table class="rr-evidence-table"><thead><tr><th>來源日期／號碼</th><th>目標日期／開獎號碼</th><th>命中</th></tr></thead><tbody>${r.examples.map(e=>`<tr><td>${EvidenceColors.source(e.source,e.base,r,lastRankRememberState)}</td><td>${EvidenceColors.target(e.target,e.opened,r,e,lastRankRememberState)}</td><td class="rr-hit-cell">${ReadableResults.hit(e.hit)}</td></tr>`).join('')}</tbody></table></div><p>明細顯示最近最多8筆${r.value!=null?'成立樣本':''}；統計使用全部有效樣本。</p></details>`).join('')}`;}
 $('rank-list').addEventListener('click',e=>{const button=e.target.closest('[data-rank-formula]');if(!button)return;const x=currentRank[Number(button.dataset.rankFormula)];if(!x)return;globalThis.getRememberedRankRule=ri=>({rule:x.rules[ri],state:lastRankRememberState});globalThis.openRankFormula(GameLabels.name(lastRankRememberState.config.game)+'｜號碼 '+String(x.number).padStart(2,'0')+' 的推算公式',formulaBody(x));});
 })();
 </script><script>// 獨立拖牌板塊；沿用已核驗的拖牌核心，不另造一套計算。
@@ -726,7 +726,21 @@ if(!selected)return all;const cls=side==='target'?'rr-candidate-opened':'rr-sour
 function source(date,value,r,state){let values=value;const original=parse(value);if(!original||original.length<5){const row=state?.rows?.find(x=>x.date===date);const ns=state?.config?.order==='draw'?row?.drawNums:row?.sortedNums||(row?.nums?[...row.nums].sort((a,b)=>a-b):null);if(ns&&!row.missing)values=ns;}
 let displayRule=r;if(r.memorySpec?.kind==='stair'&&original?.length===1&&Array.isArray(values))displayRule={...r,memorySpec:{...r.memorySpec,p:values.indexOf(original[0])}};
 const html=paint(ReadableResults.dateNumbers(date,values),values,displayRule,'source');return html+(values!==value&&(!original||original.length<5)?'<div class="rr-source-note">原取碼：'+ReadableResults.numbers(value)+'</div>':'');}
-function target(date,value,r){return paint(ReadableResults.dateNumbers(date,value),value,r,'target');}
+function target(date,value,r,e,state){
+ const spec=r.memorySpec;
+ let historical=r;
+ if(e&&['stair','formula'].includes(spec?.kind)){
+  const formula=LottoFormulaRegistry.list().find(item=>item.id===spec.formulaId);
+  const max=Lotto.games[state?.config?.game]?.max;
+  const base=parse(e.base);
+  const opened=parse(value);
+  const outputs=formula&&max&&base?.length===1&&opened
+   ? opened.filter(number=>formula.value(base[0],number,max)===spec.value)
+   : [];
+  historical={...r,outputs};
+ }
+ return paint(ReadableResults.dateNumbers(date,value),value,historical,'target');
+}
 root.EvidenceColors={source,target,paint};
 })(globalThis);
 </script><script>/* 自動更新只接續原資料，不更換舊資料集，來源不足以銜接時停止。 */
@@ -1137,7 +1151,8 @@ function choices(){const game=LottoSearchState().config.game,g=Lotto.games[game]
     }
     if(!best?.hits)continue;
     const details=document.createElement('details');details.className='module-result';panel.append(details);
-    add(details,'summary',definition.name+' · '+best.numbers.map(n=>String(n).padStart(2,'0')).join('／')+' · 命中 '+best.hits+'／'+opened.length+' 組');
+    const summary=add(details,'summary','');summary.className='fv-summary';
+    summary.innerHTML=FormulaVisual.summary({condition:{number:options.a,second:options.b},position:options.position,n:options.n,outputs:best.numbers,need:definition.need,hits:best.hits,samples:opened.length});
     let shown=false;
     details.addEventListener('toggle',()=>{
      if(!details.open||shown)return;
