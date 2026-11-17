@@ -1070,19 +1070,19 @@ function choices(){const game=LottoSearchState().config.game,g=Lotto.games[game]
 (()=>{
  const box=document.getElementById('located-cycle-candidates');
  function render(){
-  const {state,rules}=LottoLocatedState();
+  const {state,rules}=globalThis.LottoLocatedState();
   const max=Lotto.games[state.config.game].max;
   const cards=[];
   for(const rule of rules){
    for(const raw of rule.raw){
-    const wrapped=CycleFlip.wrap(raw,max);
-    const flipped=CycleFlip.flip(wrapped,max);
+    const wrapped=globalThis.CycleFlip.wrap(raw,max);
+    const flipped=globalThis.CycleFlip.flip(wrapped,max);
     for(const [number,label] of [[wrapped,raw===wrapped?'':'循環回推'],[flipped,flipped===wrapped?'':'指定翻轉']]){
      if(!label||!Number.isInteger(number)||number<1||number>max)continue;
      const card=document.createElement('article');card.className='rank-number-card';
      const ball=document.createElement('div');ball.className='rank-big-ball';ball.textContent=String(number).padStart(2,'0');
      const note=document.createElement('p');
-     note.textContent=label+' · 準順'+(rule.p+1)+' · '+(rule.op==='sum'?'合數':'差數')+' '+rule.value+' · '+(raw===wrapped?wrapped:raw+' → '+wrapped)+(number!==wrapped?' → '+number:'');
+     note.textContent=label+' · 準碼 '+String(rule.base).padStart(2,'0')+' · 準順'+(rule.p+1)+' · '+(rule.op==='sum'?'合數':'差數')+' '+rule.value+' · '+(raw===wrapped?wrapped:raw+' → '+wrapped)+(number!==wrapped?' → '+number:'');
      card.append(ball,note);cards.push(card);
     }
    }
@@ -1093,9 +1093,10 @@ function choices(){const game=LottoSearchState().config.game,g=Lotto.games[game]
   const note=document.createElement('p');note.textContent='由共同公式衍生。原公式的歷史支持次數不計為這些候選的命中次數。';
   const grid=document.createElement('div');grid.className='rank-number-grid';grid.append(...cards);
   box.append(title,note,grid);
-  const empty=document.querySelector('#candidates > .empty');
+  const empty=document.querySelector('#candidates .empty');
   if(empty)empty.hidden=true;
  }
+ globalThis.renderLocatedCycleCandidates=render;
  addEventListener('located-analysis-rendered',()=>queueMicrotask(render));
  render();
 })();
