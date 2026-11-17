@@ -365,7 +365,7 @@ root.AutoLottoSearch={prepare,plans,inspect,inspectTarget};
 function csv(row){return row.map(s=>'"'+String(s??'').replace(/"/g,'""')+'"').join(',');}
 function save(name,text){const url=URL.createObjectURL(new Blob(['\uFEFF'+text],{type:'text/csv;charset=utf-8'})),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 function hydrate(x){const c=x.plan.c,usable=[];snap.rows.forEach((r,i)=>{if(r.nums?.includes(c.number)&&(c.second==null||r.nums.includes(c.second))&&(!c.position||r.nums[c.position-1]===c.number)&&i+c.offset>=0&&i+c.offset<=x.plan.anchor&&i+c.n<=x.plan.anchor&&snap.rows[i+c.offset]?.nums&&snap.rows[i+c.n]?.nums)usable.push(i);});return {...x,plan:{...x.plan,usable},rules:snap.date?AutoLottoSearch.inspectTarget(snap.rows,{...x.plan,usable},snap.target,x.formula):AutoLottoSearch.inspect(snap.rows,{...x.plan,usable},snap.target,x.formula,3,'gte')};}
-function render(){const slice=results.slice(page*pageSize,(page+1)*pageSize);$('auto-results').innerHTML=slice.map((item,index)=>{const x=hydrate(item);const {plan,formula,rules}=x,c=plan.c,base=snap.rows[plan.baseIndex],target=snap.rows[plan.targetIndex];return `<details><summary>${esc(formula.label)} · 定位${c.number}${c.second?'＋'+c.second+' 同開':''} · ${c.position?'號①第'+c.position+'位':'不限順位'} · 下${c.n}期 · 準期${c.offset>=0?'+':''}${c.offset} · ${rules.length}個公式</summary><p>定位：${esc(snap.rows[plan.anchor].date)}；準期：${esc(base.date)}；${target?'目標：'+esc(target.date)+'，'+(target.nums?.includes(snap.target)?'已開出指定號碼':'未開出指定號碼'):snap.date?'目標：'+esc(snap.date)+(snap.period?' · '+esc(snap.period)+'期':''):'目標尚未開出'}。${c.offset>=c.n?'【事後分析：準期已達或超過目標期】':''}</p>${rules.map((r,ri)=>`<details><summary>準順${r.p+1}：公式值 ${r.value}，本次準碼 ${r.base} → 候選 ${snap.target}；歷史 ${r.count} 次</summary>${snap.date?`<button type="button" class="button quiet" data-save-auto-result="${page*pageSize+index}:${ri}">儲存此公式預測</button>`:''}<div class="table-scroll"><table><thead><tr><th>定位日</th><th>準期日</th><th>目標日</th><th>準碼</th><th>目標開碼</th><th>公式值</th></tr></thead><tbody>${r.occurrences.map(a=>`<tr><td>${esc(snap.rows[a.locator].date)}</td><td>${esc(snap.rows[a.baseIndex].date)}</td><td>${esc(snap.rows[a.targetIndex].date)}</td><td>${a.base}</td><td>${a.target}</td><td>${r.value}</td></tr>`).join('')}</tbody></table></div></details>`).join('')}</details>`;}).join('')||'尚無符合公式。';$('auto-page').textContent=`第${page+1}／${Math.max(1,Math.ceil(results.length/pageSize))}頁 · ${results.length}組符合條件（不是機率排名）`;$('auto-prev').disabled=page===0;$('auto-next').disabled=(page+1)*pageSize>=results.length;$('auto-export').disabled=!results.length;}
+function render(){const slice=results.slice(page*pageSize,(page+1)*pageSize);$('auto-results').innerHTML=slice.map((item,index)=>{const x=hydrate(item);const {plan,formula,rules}=x,c=plan.c,base=snap.rows[plan.baseIndex],target=snap.rows[plan.targetIndex];return `<details><summary>${esc(formula.label)} · 定位${c.number}${c.second?'＋'+c.second+' 同開':''} · ${c.position?'號①第'+c.position+'位':'不限順位'} · 下${c.n}期 · 準期${c.offset>=0?'+':''}${c.offset} · ${rules.length}個公式</summary><p>定位：${esc(snap.rows[plan.anchor].date)}；準期：${esc(base.date)}；${target?'目標：'+esc(target.date)+'，'+(target.nums?.includes(snap.target)?'已開出指定號碼':'未開出指定號碼'):snap.date?'目標：'+esc(snap.date)+(snap.period?' · '+esc(snap.period)+'期':''):'目標尚未開出'}。${c.offset>=c.n?'【事後分析：準期已達或超過目標期】':''}</p>${rules.map((r,ri)=>`<details><summary>準順${r.p+1}：公式值 ${r.value}，本次準碼 ${r.base} → 候選 ${snap.target}；歷史 ${r.count} 次</summary>${snap.date?`<button type="button" class="button quiet" data-save-auto-result="${page*pageSize+index}:${ri}">儲存此公式預測</button>`:''}<div class="table-scroll"><table><thead><tr><th>定位日</th><th>準期日</th><th>目標日</th><th>準碼</th><th>目標開碼</th><th>公式值</th></tr></thead><tbody>${r.occurrences.map(a=>`<tr><td>${esc(snap.rows[a.locator].date)}</td><td>${esc(snap.rows[a.baseIndex].date)}</td><td>${esc(snap.rows[a.targetIndex].date)}</td><td>${a.base}</td><td>${a.target}</td><td>${r.value}</td></tr>`).join('')}</tbody></table></div></details>`).join('')}</details>`;}).join('')||'尚無符合公式。';$('auto-page').textContent=`第${page+1}／${Math.max(1,Math.ceil(results.length/pageSize))}頁 · ${results.length}組符合條件 · 準期距目標期由近到遠`;$('auto-prev').disabled=page===0;$('auto-next').disabled=(page+1)*pageSize>=results.length;$('auto-export').disabled=!results.length;}
 $('auto-results').addEventListener('click',async event=>{
  const button=event.target.closest('[data-save-auto-result]');
  if(!button||busy||!snap?.date)return;
@@ -395,7 +395,7 @@ function resolveAutoTarget(state,date){
 $('auto-form').onsubmit=async e=>{e.preventDefault();if(busy)return;try{const state=LottoSearchState();CentralDataset.assert(state.config.game,state.rows);const g=Lotto.games[state.config.game],raw=$('auto-target').value.trim(),target=Number(raw);if(!raw||!Number.isInteger(target)||target<1||target>g.max)throw Error('請輸入1–'+g.max+'的目標號碼。');const formulas=LottoFormulaRegistry.list(),date=$('auto-target-date')?.value;if(!date)throw Error('請先選擇預測日期。');const selected=resolveAutoTarget(state,date);snap={rows:AutoLottoSearch.prepare(Lotto,selected?.rows||state.rows,state.config.game,state.config.order),target,date,period:selected?.period,game:state.config.game,calculatedAt:new Date().toISOString(),revision:state.config.dataRevision,targetIndex:selected?selected.seq-1:null};const base={...state.config,limit:0,threshold:3,comparison:'gte'};results=[];exportLines=[csv(['目標','公式類型','定位①','定位②','號①順位','N期','準期偏移','定位日期','準期日期','目標日期','分析類型','準順位','公式值','本次準碼','歷史次數'])];page=0;stopped=false;busy=true;$('auto-go').disabled=true;$('auto-stop').disabled=false;render();let checked=0,ruleCount=0,lastPaint=performance.now();$('auto-status').textContent='開始全自動搜尋，使用全部歷史樣本，門檻至少3次。';
 // 階梯已移至獨立板塊。
 outer:for(const plan of AutoLottoSearch.plans(Lotto,snap.rows,state.config.game,base,snap.targetIndex)){for(const formula of formulas){if(stopped)break outer;const rules=date?AutoLottoSearch.inspectTarget(snap.rows,plan,target,formula):AutoLottoSearch.inspect(snap.rows,plan,target,formula,3,'gte');checked++;if(rules.length){results.push({plan:{c:plan.c,anchor:plan.anchor,baseIndex:plan.baseIndex,targetIndex:plan.targetIndex},formula});ruleCount+=rules.length;const c=plan.c;for(const r of rules)exportLines.push(csv([target,formula.label,c.number,c.second??'',c.position,c.n,c.offset,snap.rows[plan.anchor].date,snap.rows[plan.baseIndex].date,snap.rows[plan.targetIndex]?.date||snap.date||'',c.offset>=c.n?'事後分析':snap.rows[plan.targetIndex]?'歷史回測':'待開目標',r.p+1,r.value,r.base,r.count]));}if(performance.now()-lastPaint>120){$('auto-status').textContent=`搜尋中：已檢查 ${checked.toLocaleString()} 組，找到 ${ruleCount.toLocaleString()} 個公式。手機請保持此頁開啟，可隨時停止並匯出部分結果。`;render();await new Promise(r=>setTimeout(r,0));lastPaint=performance.now();}}}
-results.sort((a,b)=>Math.abs(a.plan.c.offset)-Math.abs(b.plan.c.offset)||a.plan.c.offset-b.plan.c.offset);page=0;$('auto-status').textContent=`${stopped?'已停止（部分結果）':'搜尋完成'}：檢查 ${checked.toLocaleString()} 組，找到 ${ruleCount.toLocaleString()} 個公式。全部結果可翻頁或匯出。`;render();
+results.sort((a,b)=>Math.abs(a.plan.targetIndex-a.plan.baseIndex)-Math.abs(b.plan.targetIndex-b.plan.baseIndex)||Math.abs(a.plan.c.offset)-Math.abs(b.plan.c.offset)||a.plan.c.offset-b.plan.c.offset);page=0;$('auto-status').textContent=`${stopped?'已停止（部分結果）':'搜尋完成'}：檢查 ${checked.toLocaleString()} 組，找到 ${ruleCount.toLocaleString()} 個公式。全部結果可翻頁或匯出。`;render();
 }catch(err){$('auto-status').textContent=err.message||String(err);}finally{busy=false;$('auto-go').disabled=false;$('auto-stop').disabled=true;}};
 })();
 </script><script>// 循環運算與明確列出的翻轉對應分開註冊，避免開獎後臨時換規則。
@@ -1154,48 +1154,3 @@ function choices(){const game=LottoSearchState().config.game,g=Lotto.games[game]
  render();
 })();
 </script></body></html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
