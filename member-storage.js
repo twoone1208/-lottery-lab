@@ -5,8 +5,18 @@
     set: Storage.prototype.setItem,
     remove: Storage.prototype.removeItem
   };
-  const rawGet = key => native.get.call(localStorage, key);
-  const rawSet = (key, value) => native.set.call(localStorage, key, value);
+  const marker = '~lotto-lz1~';
+  const rawGet = key => {
+    const value = native.get.call(localStorage, key);
+    return value?.startsWith(marker) && window.LZString
+      ? window.LZString.decompressFromUTF16(value.slice(marker.length)) : value;
+  };
+  const rawSet = (key, value) => {
+    // 重複的歷史快照用無損壓縮保存，原本訪客備份保留原格式。
+    const packed = window.LZString && /^(lotto-member:|lotto-cloud-baseline:|lotto-cloud-before-restore:)/.test(key)
+      ? marker + window.LZString.compressToUTF16(String(value)) : value;
+    native.set.call(localStorage, key, packed);
+  };
   const ownerKey = 'lotto-cloud-active-owner';
   const owner = rawGet(ownerKey) || 'guest';
   const scoped = key => /^(lotto-memory-v1-(539|daily|mark6)|lotto-chain-patterns-v1-(539|daily|mark6)|lotto-manual-forecasts-v1|lotto-original-rank-archive-v1:local(?::view:(539|daily|mark6))?|lotto-nav-shortcuts-v1|lotto-evidence-font-v1)$/.test(key);

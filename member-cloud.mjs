@@ -88,7 +88,10 @@ async function initializeSession(session) {
     return;
   }
   // 以伺服器確認登入者，再讀取該使用者自己的資料。
-  user = check(await client.auth.getUser()).user;
+  const loginId = user.id;
+  const verified = check(await client.auth.getUser(session.access_token)).user;
+  if (user?.id !== loginId) return;
+  user = verified;
   const id = user.id;
   const profile = check(await client.from('profiles').select('display_name,avatar_url,tier,vip_expire_at').eq('id', id).single());
   if (profile.avatar_url) {
@@ -103,7 +106,7 @@ async function initializeSession(session) {
       }
     } catch { /* 沒有合法頭像時只顯示名稱。 */ }
   }
-  account.append(node('strong', profile.display_name || user.email || '會員'));
+  account.append(node('strong', profile.display_name && profile.display_name !== '會員' ? profile.display_name : user.email || '會員'));
   const center = node('a', '會員中心');
   center.href = './internal-3.html#personal';
   center.className = 'text-button';
