@@ -22,7 +22,12 @@
         const callback = new URL(location.href);
         const params = new URLSearchParams(location.hash.slice(1));
         const failure = callback.searchParams.get('error_code') || params.get('error_code') || callback.searchParams.get('error') || params.get('error');
-        if (failure) throw Error('LINE 登入驗證失敗，請聯絡管理員。錯誤代碼：' + failure.replace(/[^a-z0-9_-]/gi, '').slice(0,64));
+        if (failure) {
+          // 僅呈現後端公開錯誤原因，不保留回站網址或任何登入憑證。
+          const description = callback.searchParams.get('error_description') || params.get('error_description') || '';
+          const safeDescription = description.replace(/[\u0000-\u001f]/g, ' ').replace(/(?:access_token|refresh_token|id_token|code|secret)=[^\s&]+/gi, '[redacted]').slice(0, 300);
+          throw Error('LINE 登入驗證失敗。錯誤代碼：' + failure.replace(/[^a-z0-9_-]/gi, '').slice(0,64) + (safeDescription ? '。原因：' + safeDescription : ''));
+        }
         const { data, error } = callback.searchParams.has('code')
           ? await client.auth.exchangeCodeForSession(callback.searchParams.get('code'))
           : await client.auth.getSession();
