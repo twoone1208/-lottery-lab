@@ -80,10 +80,6 @@ async function initializeSession(session) {
     const line = button(config.LINE_READY ? 'LINE 登入' : 'LINE 登入（待設定）', signIn);
     line.disabled = !config.LINE_READY;
     account.append(line);
-    const legacy = node('a', '原會員登入');
-    legacy.className = 'text-button';
-    legacy.href = './internal-3.html#personal';
-    account.append(legacy);
     report('未登入 · 資料保存在此裝置');
     return;
   }
