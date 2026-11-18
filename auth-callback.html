@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>登入中 · 統計學人生</title>
+  <script src="config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.118.0/dist/umd/supabase.js"></script>
+</head>
+<body>
+  <p id="auth-status" role="status">正在完成登入…</p>
+  <a href="./index.html#home">返回首頁</a>
+  <script>
+    // 獨立回站頁先處理 OAuth 回傳，避免主站的雜湊路由先移除登入憑證。
+    (async () => {
+      try {
+        const config = window.LOTTO_CLOUD_CONFIG;
+        const client = supabase.createClient(config.SUPABASE_URL, config.SUPABASE_ANON_KEY, {
+          auth: { persistSession: true, autoRefreshToken: true,
+            detectSessionInUrl: true, storageKey: config.AUTH_STORAGE_KEY }
+        });
+        const { data, error } = await client.auth.getSession();
+        if (error) throw error;
+        if (!data.session) throw Error('登入未完成，請返回首頁重試');
+        history.replaceState(null, '', location.pathname);
+        location.replace('./index.html#home');
+      } catch (error) {
+        document.getElementById('auth-status').textContent = error.message;
+      }
+    })();
+  </script>
+</body>
+</html>
