@@ -66,7 +66,7 @@ export function createMemberPortal({client, signIn}) {
     }catch(e){if(run===generation)note.textContent=e.message==='Auth session missing!'?'請先使用頁首 LINE 登入。':e.message;}
   }
   addEventListener('hashchange',render);
-  client.auth.onAuthStateChange(()=>setTimeout(render,0));
+  let lastAuthId; client.auth.onAuthStateChange((event,session)=>{const id=session?.user?.id||null;if(id!==lastAuthId){lastAuthId=id;setTimeout(render,0);}});
   render();
   return {refresh:render};
 }
