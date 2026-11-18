@@ -1,4 +1,4 @@
-import { createMemberPortal } from './member-portal.mjs';
+import { createMemberPortal } from './member-portal.mjs?v=portal-2';
 import { mergeValue, equal, validateBackup, activeVip } from './cloud-sync-core.mjs';
 
 const config = window.LOTTO_CLOUD_CONFIG;
