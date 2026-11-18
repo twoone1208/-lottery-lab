@@ -1,3 +1,4 @@
+import { createMemberPortal } from './member-portal.mjs';
 import { mergeValue, equal, validateBackup, activeVip } from './cloud-sync-core.mjs';
 
 const config = window.LOTTO_CLOUD_CONFIG;
@@ -104,7 +105,7 @@ async function initializeSession(session) {
   }
   account.append(node('strong', profile.display_name && profile.display_name !== '會員' ? profile.display_name : user.email || '會員'));
   const center = node('a', '會員中心');
-  center.href = './internal-3.html#personal';
+  center.href = '#member';
   center.className = 'text-button';
   account.append(center);
   const vip = activeVip(profile);
@@ -219,6 +220,7 @@ try {
   client = window.supabase.createClient(config.SUPABASE_URL, config.SUPABASE_ANON_KEY, {
     auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true, storageKey: config.AUTH_STORAGE_KEY }
   });
+  createMemberPortal({client, signIn});
   // Auth 事件內只安排工作，避免在事件鎖中執行其他 Supabase API。
   let initializedId;
   const start = session => {
@@ -239,6 +241,6 @@ try {
   document.addEventListener('visibilitychange', () => { if (!document.hidden && ready) flush().catch(() => {}); });
 } catch (error) {
   account.append(node('a', '會員中心'));
-  account.lastChild.href = './internal-3.html#personal';
+  account.lastChild.href = '#member';
   report(error.message);
 }
