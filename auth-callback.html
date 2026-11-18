@@ -19,12 +19,19 @@
           auth: { persistSession: true, autoRefreshToken: true,
             detectSessionInUrl: true, storageKey: config.AUTH_STORAGE_KEY }
         });
-        const { data, error } = await client.auth.getSession();
+        const callback = new URL(location.href);
+        const params = new URLSearchParams(location.hash.slice(1));
+        const failure = callback.searchParams.get('error_code') || params.get('error_code') || callback.searchParams.get('error') || params.get('error');
+        if (failure) throw Error('LINE 登入驗證失敗，請聯絡管理員。錯誤代碼：' + failure.replace(/[^a-z0-9_-]/gi, '').slice(0,64));
+        const { data, error } = callback.searchParams.has('code')
+          ? await client.auth.exchangeCodeForSession(callback.searchParams.get('code'))
+          : await client.auth.getSession();
         if (error) throw error;
-        if (!data.session) throw Error('登入未完成，請返回首頁重試');
+        if (!data.session) throw Error('未收到登入憑證，請在同一個 Safari 瀏覽器重新從網站按 LINE 登入。');
         history.replaceState(null, '', location.pathname);
         location.replace('./index.html#home');
       } catch (error) {
+        history.replaceState(null, '', location.pathname);
         document.getElementById('auth-status').textContent = error.message;
       }
     })();
