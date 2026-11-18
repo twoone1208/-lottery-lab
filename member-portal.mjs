@@ -51,11 +51,11 @@ export function createMemberPortal({client, signIn}) {
         if(!admin)throw Error('沒有會員管理權限');
         const members=check(await client.rpc('lab3_member_admin_portal',{p:{action:'list'}}));if(run!==generation)return;
         const form=el('form');form.className='panel portal-contact';const label=el('label','選擇會員（LINE 名稱）'),select=el('select');
-        for(const m of members){const option=el('option',`${m.name}${m.contact_email?' · '+m.contact_email:''}`);option.value=m.id;select.append(option);}label.append(select);
-        const roleLabel=el('label','管理身分'),role=el('select');for(const [value,name]of [['member','一般會員'],['admin','協助管理員'],['researcher','研究員']]){const o=el('option',name);o.value=value;role.append(o);}roleLabel.append(role);
+        for(const m of members){const option=el('option',`${m.name} · ${m.id.slice(0,8)}${m.contact_email?' · '+m.contact_email:''}`);option.value=m.id;select.append(option);}label.append(select);
+        const roleLabel=el('label','管理身分'),role=el('select');for(const [value,name]of [['member','一般會員'],['admin','協助管理員'],['researcher','研究員'],['super_admin','總管理員']]){const o=el('option',name);o.value=value;role.append(o);}roleLabel.append(role);
         const enabledLabel=el('label','帳號狀態'),enabled=el('select');for(const [v,name]of [['true','啟用'],['false','停用']]){const o=el('option',name);o.value=v;enabled.append(o);}enabledLabel.append(enabled);
         const save=el('button','儲存會員設定');save.className='button';save.type='submit';
-        const current=el('p');function update(){const m=members.find(x=>x.id===select.value);const locked=m.role==='super_admin'||m.id===auth.user.id||ctx.role!=='super_admin';role.value=m.role==='super_admin'?'member':m.role;enabled.value=String(m.enabled);role.disabled=enabled.disabled=save.disabled=locked;current.textContent=m.role==='super_admin'?'總管理員：保留最高權限，不可在此降權或停用。':'';}select.onchange=update;update();
+        const current=el('p');function update(){const m=members.find(x=>x.id===select.value);const locked=m.role==='super_admin'||m.id===auth.user.id||ctx.role!=='super_admin';role.value=m.role;enabled.value=String(m.enabled);role.disabled=enabled.disabled=save.disabled=locked;current.textContent=m.role==='super_admin'?'總管理員：保留最高權限，不可在此降權或停用。':'';}select.onchange=update;update();
         form.append(label,current,roleLabel,enabledLabel,save);form.onsubmit=async e=>{e.preventDefault();save.disabled=true;try{check(await client.rpc('lab3_member_admin_portal',{p:{action:'update',id:select.value,role:role.value,enabled:enabled.value==='true'}}));await render();}catch(e){note.textContent=e.message;save.disabled=false;}};s.append(form);return;
       }
       if(route==='member-company'&&!ctx.company_role)throw Error('沒有公司私有研究權限');

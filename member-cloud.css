@@ -18,3 +18,4 @@
 .member-portal-page details label{display:flex;gap:12px;align-items:center;margin:20px 0}
 .member-portal-page details input[type=checkbox]{width:22px;height:22px;flex:none}
 @media(max-width:600px){.member-portal-page .panel{padding:18px}.member-portal-page{font-size:18px}.portal-tools{gap:10px}.portal-contact{max-width:100%}}
+body:has(.member-portal-page.active) .shared-bar{display:none!important}
